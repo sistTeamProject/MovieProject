@@ -7,38 +7,49 @@
 <title>Insert title here</title>
 </head>
 <body>
-<header>
-  <nav class="navbar  navbar-fixed-top navbar-default">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle uarr collapsed" data-toggle="collapse" data-target="#navbar-collapse-uarr">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="../main/main.do" title="">
-          <img src="../images/mashuptemplate.svg" class="navbar-logo-img" alt="">
-        </a>
-      </div>
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header__logo">
+                        <a href="./index.html">
+                            <img src="../img/logo.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="header__nav">
+                        <nav class="header__menu mobile-menu">
+                            <ul>
+                                <li class="active"><a href="./index.html">Homepage</a></li>
+                                <li><a href="../list/rank.do">예매순위 <span class="arrow_carrot-down"></span></a>
+                                    <ul class="dropdown">
+                                        <li><a href="./categories.html">Categories</a></li>
+                                        <li><a href="./anime-details.html">Anime Details</a></li>
+                                        <li><a href="./anime-watching.html">Anime Watching</a></li>
+                                        <li><a href="./blog-details.html">Blog Details</a></li>
+                                        <li><a href="./signup.html">Sign Up</a></li>
+                                        <li><a href="./login.html">Login</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="./blog.html">Our Blog</a></li>
+                                <li><a href="#">Contacts</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="header__right">
+                        <a href="#" class="search-switch"><span class="icon_search"></span></a>
+                        <a href="./login.html"><span class="icon_profile"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+    <!-- Header End -->
 
-      <div class="collapse navbar-collapse" id="navbar-collapse-uarr">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="../main/main.do" title="" class="active">Home</a></li>
-          <li><a href="../list/rank.do" title=""> RANK</a></li>
-          <li><a href="#" title=""> Pricing </a></li>
-          <li><a href="#" title="">Contact</a></li>
-          <li><a href="#" title="">Components</a></li>
-          <li>
-            <p>
-              <a href="#" class="btn btn-primary navbar-btn" title="">Download</a>
-            </p>
-          </li>
-          
-        </ul>
-      </div>
-    </div>
-  </nav>
-</header>
 </body>
 </html>

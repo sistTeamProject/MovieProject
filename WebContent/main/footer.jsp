@@ -7,48 +7,37 @@
 <title>Insert title here</title>
 </head>
 <body>
-<footer>
-    <div class="section-container footer-container">
-        <div class="container">
-            <div class="row">
-                    <div class="col-md-4">
-                        <h4>About us</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sit amet consectetur dolor</p>
-                    </div>
-
-                    <div class="col-md-4">
-                        <h4>Do you like ? Share this !</h4>
-                        <p>
-                            <a href="https://facebook.com/" class="social-round-icon white-round-icon fa-icon" title="">
-                            <i class="fa fa-facebook" aria-hidden="true"></i>
-                          </a>
-                          <a href="https://twitter.com/" class="social-round-icon white-round-icon fa-icon" title="">
-                            <i class="fa fa-twitter" aria-hidden="true"></i>
-                          </a>
-                          <a href="https://www.linkedin.com/" class="social-round-icon white-round-icon fa-icon" title="">
-                            <i class="fa fa-linkedin" aria-hidden="true"></i>
-                          </a>
-                        </p>
-                        <p><small>© Untitled | Website created with <a href="http://www.mashup-template.com/" class="link-like-text" title="Create website with free html template">Mashup Template</a>/<a href="http://www.unsplash.com/" class="link-like-text" title="Beautiful Free Images">Unsplash</a></small></p>    
-                    </div>
-
-                    <div class="col-md-4">
-                        <h4>Subscribe to newsletter</h4>
-                        
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input type="text" class="form-control footer-input-text">
-                                <div class="input-group-btn">
-                                    <button type="button" class="btn btn-primary btn-newsletter ">OK</button>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-            </div>
-        </div>
+<!-- Footer Section Begin -->
+<footer class="footer">
+    <div class="page-up">
+        <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
     </div>
-</footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="footer__logo">
+                    <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="footer__nav">
+                    <ul>
+                        <li class="active"><a href="./index.html">Homepage</a></li>
+                        <li><a href="./categories.html">Categories</a></li>
+                        <li><a href="./blog.html">Our Blog</a></li>
+                        <li><a href="#">Contacts</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+
+              </div>
+          </div>
+      </div>
+  </footer>
+  <!-- Footer Section End -->
 </body>
 </html>
