@@ -33,7 +33,7 @@
     </div>
 
     <!-- Header Section Begin -->
-    <header class="header">
+    <!-- <header class="header">
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
@@ -73,7 +73,7 @@
             </div>
             <div id="mobile-menu-wrap"></div>
         </div>
-    </header>
+    </header> -->
     <!-- Header End -->
 
     <!-- Breadcrumb Begin -->
@@ -133,7 +133,7 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <ul>
-                                            <li><span>평점</span> ${vo.score }</li>
+                                            <li><span>평점</span></li>
                                             <li><span>Rating:</span> 8.5 / 161 times</li>
                                             <li><span>Duration:</span> 24 min/ep</li>
                                             <li><span>Quality:</span> HD</li>

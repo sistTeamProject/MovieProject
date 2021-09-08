@@ -15,11 +15,17 @@ public class MovieModel {
 	@RequestMapping("movieinfo/relmovie.do")
 	public String real_movie(HttpServletRequest request, HttpServletResponse response)
 	{
+		String page=request.getParameter("page");
+		if(page==null)
+		  page="1";
+		int curpage=Integer.parseInt(page);
 		MovieDAO dao=new MovieDAO();
-		List<MovieVO> list=dao.movieListData();
-		
+		List<MovieVO> list=dao.movieRealData(curpage);
+		int totalpage=dao.movieTotalPage();
+		  
+		request.setAttribute("curpage", curpage);//현재페이지
+		request.setAttribute("totalpage", totalpage);//총페이지
 		request.setAttribute("list", list);
-		
 		request.setAttribute("main_jsp", "../movieinfo/relmovie.jsp");
 		return "../main/main.jsp";
 	}
@@ -27,11 +33,17 @@ public class MovieModel {
 	@RequestMapping("movieinfo/schmovie.do")
 	public String sch_movie(HttpServletRequest request, HttpServletResponse response)
 	{
+		String page=request.getParameter("page");
+		if(page==null)
+		  page="1";
+		int curpage=Integer.parseInt(page);
 		MovieDAO dao=new MovieDAO();
-		List<MovieVO> list=dao.movieListData();
-		
+		List<MovieVO> list=dao.movieSchData(curpage);
+		int totalpage=dao.movieTotalPage();
+		  
+		request.setAttribute("curpage", curpage);//현재페이지
+		request.setAttribute("totalpage", totalpage);//총페이지
 		request.setAttribute("list", list);
-		
 		request.setAttribute("main_jsp", "../movieinfo/schmovie.jsp");
 		return "../main/main.jsp";
 	}
