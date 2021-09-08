@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,9 +40,11 @@
                                 </li>
                                 <li><a href="#">회원</a>
                                 	<ul class="dropdown">
-                                		<li><a href="#">로그인</a></li>
-                                        <li><a href="#">회원가입</a></li>
-                                        <li><a href="#">마이 페이지</a></li>
+                                		<li><a href="../member/login.do">로그인</a></li>
+                                        <li><a href="../member/join.do">회원가입</a></li>
+                                        <li><a href="../member/mypage.do">마이페이지</a></li>
+                                       	<li><a href="../member/mypage_reserve.do">예매내역</a></li>
+                                       	<li><a href="../member/mypage_editinfo.do">회원정보수정</a></li>
                                 	</ul>
                                 </li>
                             </ul>
