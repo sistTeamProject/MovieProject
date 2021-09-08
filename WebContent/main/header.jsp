@@ -23,18 +23,28 @@
                         <nav class="header__menu mobile-menu">
                             <ul>
                                 <li class="active"><a href="./index.html">Homepage</a></li>
-                                <li><a href="../list/rank.do">예매순위 <span class="arrow_carrot-down"></span></a>
+                                <li><a href="#">예매</a></li>
+                                <li><a href="#">영화</a>
                                     <ul class="dropdown">
-                                        <li><a href="./categories.html">Categories</a></li>
-                                        <li><a href="./anime-details.html">Anime Details</a></li>
-                                        <li><a href="./anime-watching.html">Anime Watching</a></li>
-                                        <li><a href="./blog-details.html">Blog Details</a></li>
-                                        <li><a href="./signup.html">Sign Up</a></li>
-                                        <li><a href="./login.html">Login</a></li>
+                                        <li><a href="../movieinfo/relmovie.do">현재 상영 영화</a></li>
+                                        <li><a href="../movieinfo/schmovie.do">개봉 예정 영화</a></li>
+                                        <li><a href="../movieinfo/rank.do">예매 순위</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="./blog.html">Our Blog</a></li>
-                                <li><a href="#">Contacts</a></li>
+                                <li><a href="#">리뷰</a>
+                                	<ul class="dropdown">
+                                		<li><a href="#">리뷰 작성</a></li>
+                                        <li><a href="#">리뷰 게시판</a></li>
+                                	</ul>
+                                </li>
+                                <li><a href="#">회원</a>
+                                	<ul class="dropdown">
+                                		<li><a href="#">로그인</a></li>
+                                        <li><a href="#">회원가입</a></li>
+                                        <li><a href="#">마이 페이지</a></li>
+                                	</ul>
+                                </li>
+                                <li><a href="#">검색</a></li>
                             </ul>
                         </nav>
                     </div>

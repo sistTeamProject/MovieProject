@@ -13,7 +13,7 @@ import com.sist.vo.MovieVO;
 import com.sist.dao.*;
 @Controller
 public class RankModel {
-	@RequestMapping("list/rank.do")
+	@RequestMapping("movieinfo/rank.do")
 	public String rank_page(HttpServletRequest request,HttpServletResponse response) {
 		
 		
@@ -22,7 +22,7 @@ public class RankModel {
 
 		request.setAttribute("list",list);
 
-		request.setAttribute("main_jsp", "../list/rank.jsp");
+		request.setAttribute("main_jsp", "../movieinfo/rank.jsp");
 		return "../main/main.jsp";
 	}
 }
