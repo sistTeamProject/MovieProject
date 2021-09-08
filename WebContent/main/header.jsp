@@ -44,7 +44,6 @@
                                         <li><a href="#">마이 페이지</a></li>
                                 	</ul>
                                 </li>
-                                <li><a href="#">검색</a></li>
                             </ul>
                         </nav>
                     </div>
