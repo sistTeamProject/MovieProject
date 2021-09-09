@@ -34,11 +34,11 @@
                             </div>
                         </div>
                         <div class="row">
-                        <c:forEach var="vo" items="${list }">
+                        <c:forEach var="vo" items="${list }" varStatus="vonum">
                             <div class="col-lg-3">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg="${vo.poster }">
-                                        <div class="ep">18 / 18</div>
+                                        <div class="ep" style="background-color:transparent;font-size:40px">${vonum.count }</div>
                                         <div class="comment"><i class="fa fa-comments"></i> 11</div>
                                         <div class="view"><i class="fa fa-eye"></i> 9141</div>
                                     </div>

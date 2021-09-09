@@ -38,7 +38,7 @@
     </div>
 
     <!-- Header Section Begin -->
-    <!-- <header class="header">
+     <header class="header">
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
@@ -78,7 +78,7 @@
             </div>
             <div id="mobile-menu-wrap"></div>
         </div>
-    </header> -->
+    </header>
     <!-- Header End -->
 
     <!-- Breadcrumb Begin -->
@@ -149,29 +149,23 @@
                                             <li><span>국가</span> ${vo.nation }</li>
                                             <li><span>등급</span> ${vo.grade }</li>
                                             <li><span>러닝타임</span> ${vo.time }</li>
-                                            <li><span>상영상태</span>
-                                            	
-                                            </li>
-                                         
                                         </ul>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <ul>
                                             <li><span>평점</span>${vo.score }</li>
-                                            <li><span>누적 관객</span>${vo.showUser }명</li>
-                                            <li><span>Rating:</span> 8.5 / 161 times</li>
-                                            <li><span>Duration:</span> 24 min/ep</li>
-                                            <li><span>Quality:</span> HD</li> 
+                                            <li><span>누적 관객</span>${vo.showUser }명</li>    
                                         </ul>
+                                        <input type=button value="예매하기" class="btn btn-sm btn-danger" style="width:200px;height:50px;">
                                     </div>
                                 </div>
                             </div>
-                            <div class="anime__details__btn">
+                            <!-- <div class="anime__details__btn">
                                 <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Follow</a>
                                 <a href="#" class="watch-btn"><span>Watch Now</span> <i
                                     class="fa fa-angle-right"></i></a>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

@@ -18,7 +18,7 @@ public class RankModel {
 		
 		
 		MovieDAO dao=new MovieDAO();
-		List<MovieVO> list=dao.movieListData();
+		List<MovieVO> list=dao.movieRankData();
 
 		request.setAttribute("list",list);
 

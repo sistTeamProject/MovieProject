@@ -19,6 +19,8 @@ public class MovieDetailModel {
 		  MovieVO vo=dao.movieDetailData(Integer.parseInt(mno));
 		  // request에 값을 담아준다 
 		  request.setAttribute("vo", vo);
+		  request.setAttribute("main_jsp", "../movieinfo/details.jsp");
+		  //return "../main/main.jsp";
 		  return "../movieinfo/details.jsp";
 	  }
 }

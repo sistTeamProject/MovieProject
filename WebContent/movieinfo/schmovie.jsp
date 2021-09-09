@@ -43,10 +43,20 @@
                                         <div class="view"><i class="fa fa-eye"></i> 9141</div>
                                     </div>
                                     <div class="product__item__text">
-                                        <ul>
-                                            <li>${vo.genre }</li>
-                                        </ul>
-                                        <h5><a href="#">${vo.title }</a></h5>
+                                     <h3>
+                                    	<c:choose>
+                                        	<c:when test="${vo.grade eq ' 전체 관람가'}"><span style="border-radius:50%;background-color:green;font-size:15px;color:white">전체</span></c:when>
+                                        	<c:when test="${vo.grade eq ' 12세 관람가'}"><span style="border-radius:50%;background-color:deepskyblue;font-size:15px;color:white">12</span></c:when>
+                                        	<c:when test="${vo.grade eq ' 15세 관람가'}"><span style="border-radius:50%;background-color:orange;font-size:15px;color:white">15</span></c:when>
+                                        	<c:when test="${vo.grade eq ' 청소년 관람불가'}"><span style="border-radius:50%;background-color:red;font-size:15px;color:white">청불</span></c:when>
+                                  		</c:choose>
+                                        <span style="font-size:17px;color:white">${vo.title }</span>>
+                                    </h3>
+                                        <table>
+                                        	<tr>
+                                        		<th style="font-size:15px;color:white;text-align:center">개봉일 ${vo.regdate }</th>
+                                        	</tr>
+                                        </table> 
                                     </div>
                                 </div>
                             </div>

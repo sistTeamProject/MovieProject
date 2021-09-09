@@ -37,16 +37,27 @@
                         <c:forEach var="vo" items="${list }">
                             <div class="col-lg-3">
                                 <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="${vo.poster }" style="width:270px;height:400px">
+                                    <div class="product__item__pic set-bg" data-setbg="${vo.poster }" style="width:270px;height:400px;cursor:pointer" OnClick="location.href ='details.do?mno=${vo.mno }'">
                                         <div class="ep">18 / 18</div>
                                         <div class="comment"><i class="fa fa-comments"></i> 11</div>
                                         <div class="view"><i class="fa fa-eye"></i> 9141</div>
                                     </div>
                                     <div class="product__item__text">
-                                        <ul>
-                                            <li>${vo.genre }</li>
-                                        </ul>
-                                        <h5><a href="details.do?mno=${vo.mno }">${vo.title }</a></h5>
+                                    <h3>
+                                    	<c:choose>
+                                        	<c:when test="${vo.grade eq ' 전체 관람가'}"><span style="border-radius:50%;background-color:green;font-size:15px;color:white">전체</span></c:when>
+                                        	<c:when test="${vo.grade eq ' 12세 관람가'}"><span style="border-radius:50%;background-color:deepskyblue;font-size:15px;color:white">12</span></c:when>
+                                        	<c:when test="${vo.grade eq ' 15세 관람가'}"><span style="border-radius:50%;background-color:orange;font-size:15px;color:white">15</span></c:when>
+                                        	<c:when test="${vo.grade eq ' 청소년 관람불가'}"><span style="border-radius:50%;background-color:red;font-size:15px;color:white">청불</span></c:when>
+                                  		</c:choose>
+                                        <span style="font-size:17px;color:white">${vo.title }</span>>
+                                    </h3>
+                                        <table>
+                                        	<tr>
+                                        		<th style="font-size:15px;color:white">예매율 ${vo.reserve }</th>
+                                        		<th style="font-size:15px;color:red">&nbsp;&nbsp;평점 ${vo.score }</th>
+                                        	</tr>
+                                        </table>  
                                     </div>
                                 </div>
                             </div>

@@ -33,20 +33,29 @@ public class MovieDAO {
 		}catch(Exception ex) {}
 	}
 	// 데이터베이스 연결
-	public List<MovieVO> movieListData(){
+	public List<MovieVO> movieRankData(){
 		List<MovieVO> list=new ArrayList<MovieVO>();
 		try {
 			getConnection();
-			String sql="SELECT mno,title,poster,genre FROM project_movie WHERE ROWNUM <= 18 ORDER BY mno ASC";
+			String sql="SELECT mno,title,poster,genre,grade,score,reserve,num " 
+					+"FROM (SELECT mno,title,poster,genre,grade,cno,score,reserve,rownum as num " 
+					+"FROM (SELECT mno,title,poster,genre,grade,cno,score,reserve "
+					+"FROM movie ORDER BY reserve DESC)) "
+					+"WHERE rownum <= 20";
 			ps=conn.prepareStatement(sql);
 			ResultSet rs=ps.executeQuery();
 			while(rs.next()) {
 				MovieVO vo=new MovieVO();
 				vo.setMno(rs.getInt(1));
-				vo.setTitle(rs.getString(2));
-				vo.setPoster(rs.getString(3));
-				vo.setGenre(rs.getString(4));
-				list.add(vo);
+    			vo.setTitle(rs.getString(2));
+    			vo.setPoster(rs.getString(3));
+    			vo.setGenre(rs.getString(4));
+    			String grade=rs.getString(5);
+    	 		grade=grade.trim().substring(grade.indexOf("]")+1,grade.indexOf("가")+1);
+    	 		vo.setGrade(grade);
+    			vo.setScore(rs.getDouble(6));
+    			vo.setReserve(rs.getString(7));
+    			list.add(vo);
 			}
 			rs.close();
 		}catch(Exception ex) {
@@ -62,9 +71,9 @@ public class MovieDAO {
     	try
     	{
     		getConnection();
-    		String sql="SELECT mno,title,poster,genre,grade,score,num "
-    				+"FROM (SELECT mno,title,poster,genre,grade,cno,score,rownum as num "
-    				+"FROM (SELECT mno,title,poster,genre,grade,cno,score "
+    		String sql="SELECT mno,title,poster,genre,grade,score,reserve,num "
+    				+"FROM (SELECT mno,title,poster,genre,grade,cno,score,reserve,rownum as num "
+    				+"FROM (SELECT mno,title,poster,genre,grade,cno,score,reserve "
     				+"FROM movie WHERE cno=1 ORDER BY mno ASC)) "
     				+"WHERE num BETWEEN ? AND ?";
     		ps=conn.prepareStatement(sql);
@@ -83,8 +92,11 @@ public class MovieDAO {
     			vo.setTitle(rs.getString(2));
     			vo.setPoster(rs.getString(3));
     			vo.setGenre(rs.getString(4));
-    			vo.setGrade(rs.getString(5));
+    			String grade=rs.getString(5);
+    	 		grade=grade.trim().substring(grade.indexOf("]")+1,grade.indexOf("가")+1);
+    	 		vo.setGrade(grade);
     			vo.setScore(rs.getDouble(6));
+    			vo.setReserve(rs.getString(7));
     			list.add(vo);
     		}
     	}catch(Exception ex)
@@ -105,9 +117,9 @@ public class MovieDAO {
     	try
     	{
     		getConnection();
-    		String sql="SELECT mno,title,poster,genre,grade,num "
-    				+"FROM (SELECT mno,title,poster,genre,grade,cno,rownum as num "
-    				+"FROM (SELECT mno,title,poster,genre,grade,cno "
+    		String sql="SELECT mno,title,poster,genre,grade,regdate,num "
+    				+"FROM (SELECT mno,title,poster,genre,grade,cno,regdate,rownum as num "
+    				+"FROM (SELECT mno,title,poster,genre,grade,cno,regdate "
     				+"FROM movie WHERE cno=2 ORDER BY mno ASC)) "
     				+"WHERE num BETWEEN ? AND ?";
     		ps=conn.prepareStatement(sql);
@@ -126,7 +138,10 @@ public class MovieDAO {
     			vo.setTitle(rs.getString(2));
     			vo.setPoster(rs.getString(3));
     			vo.setGenre(rs.getString(4));
-    			vo.setGrade(rs.getString(5));
+    			String grade=rs.getString(5);
+    	 		grade=grade.trim().substring(grade.indexOf("]")+1,grade.indexOf("가")+1);
+    	 		vo.setGrade(grade);
+    	 		vo.setRegdate(rs.getString(6));
     			list.add(vo);
     		}
     	}catch(Exception ex)
@@ -157,7 +172,9 @@ public class MovieDAO {
  		   vo.setPoster(rs.getString(2));
  		   vo.setTitle(rs.getString(3));
  		   vo.setGenre(rs.getString(4));
- 		   vo.setGrade(rs.getString(5));
+ 		   String grade=rs.getString(5);
+ 		   grade=grade.trim().substring(grade.indexOf("]")+1,grade.indexOf("가")+1);
+ 		   vo.setGrade(grade);
  		   vo.setRegdate(rs.getString(6));
  		   vo.setEngtitle(rs.getString(7));
  		   vo.setCno(rs.getInt(8));
