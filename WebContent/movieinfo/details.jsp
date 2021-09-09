@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Anime | Template</title>
-
+<style type="text/css">
+.los{
+	display:block;
+}
+</style>
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
@@ -105,9 +110,24 @@
                     </div>
                     <div class="col-lg-9">
                         <div class="anime__details__text">
-                            <div class="anime__details__title">
-                                <h3>${vo.title }</h3>
-                                <span>${vo.director } / ${vo.actor }</span>
+                            <div>
+                            	<h3>
+                                	<span style="font-size:40px;color:white;">${vo.title }</span>
+
+                                <span style="font-size:20px;color:white;background-color:red;border-radius:8px;vertical-align:middle">
+                                
+                                	<c:choose>
+                                        <c:when test="${vo.cno eq 1 }">상영 중</c:when>
+                                        <c:when test="${vo.cno eq 2 }">개봉 예정</c:when>
+                                        <c:when test="${vo.cno eq 3 }">상영 종료</c:when>
+                                    </c:choose>
+                                    
+                                
+                                </span>
+                                </h3>
+
+                                <h6 style="color:white">${vo.engtitle }</h6>
+               
                             </div>
                             <div class="anime__details__rating">
                                 <div class="rating">
@@ -124,20 +144,24 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
                                         <ul>
-                                            <li><span>Type:</span> TV Series</li>
-                                            <li><span>Studios:</span> Lerche</li>
-                                            <li><span>개봉일</span> ${vo.regdate }</li>
-                                            <li><span>상영상태</span> Airing</li>
+                                            <li><span>개봉일</span> ${vo.regdate }</li> 
                                             <li><span>장르</span> ${vo.genre }</li>
+                                            <li><span>국가</span> ${vo.nation }</li>
+                                            <li><span>등급</span> ${vo.grade }</li>
+                                            <li><span>러닝타임</span> ${vo.time }</li>
+                                            <li><span>상영상태</span>
+                                            	
+                                            </li>
+                                         
                                         </ul>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <ul>
-                                            <li><span>평점</span></li>
+                                            <li><span>평점</span>${vo.score }</li>
+                                            <li><span>누적 관객</span>${vo.showUser }명</li>
                                             <li><span>Rating:</span> 8.5 / 161 times</li>
                                             <li><span>Duration:</span> 24 min/ep</li>
-                                            <li><span>Quality:</span> HD</li>
-                                            <li><span>누적 관객</span>${vo.showUser }</li>
+                                            <li><span>Quality:</span> HD</li> 
                                         </ul>
                                     </div>
                                 </div>

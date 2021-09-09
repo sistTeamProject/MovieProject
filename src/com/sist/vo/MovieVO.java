@@ -20,7 +20,15 @@ CODE     NOT NULL VARCHAR2(20)
  */
 public class MovieVO {
 	private int mno,cno,showUser;
+	private double score;
 	private String title,grade,reserve,genre,time,regdate,director,actor,story,nation,key,engtitle,poster,code;
+	
+	public double getScore() {
+		return score;
+	}
+	public void setScore(double score) {
+		this.score = score;
+	}
 	public int getMno() {
 		return mno;
 	}

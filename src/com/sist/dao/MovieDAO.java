@@ -62,9 +62,9 @@ public class MovieDAO {
     	try
     	{
     		getConnection();
-    		String sql="SELECT mno,title,poster,genre,grade,num "
-    				+"FROM (SELECT mno,title,poster,genre,grade,cno,rownum as num "
-    				+"FROM (SELECT mno,title,poster,genre,grade,cno "
+    		String sql="SELECT mno,title,poster,genre,grade,score,num "
+    				+"FROM (SELECT mno,title,poster,genre,grade,cno,score,rownum as num "
+    				+"FROM (SELECT mno,title,poster,genre,grade,cno,score "
     				+"FROM movie WHERE cno=1 ORDER BY mno ASC)) "
     				+"WHERE num BETWEEN ? AND ?";
     		ps=conn.prepareStatement(sql);
@@ -84,6 +84,7 @@ public class MovieDAO {
     			vo.setPoster(rs.getString(3));
     			vo.setGenre(rs.getString(4));
     			vo.setGrade(rs.getString(5));
+    			vo.setScore(rs.getDouble(6));
     			list.add(vo);
     		}
     	}catch(Exception ex)
@@ -145,7 +146,7 @@ public class MovieDAO {
  	   try
  	   {
  		   getConnection();
- 		   String sql="SELECT mno,poster,title,genre,grade,regdate,engtitle,cno,nation,time,showUser "
+ 		   String sql="SELECT mno,poster,title,genre,grade,regdate,engtitle,cno,nation,time,showUser,score "
  				     +"FROM movie "
  				     +"WHERE mno=?";
  		   ps=conn.prepareStatement(sql);
@@ -163,6 +164,7 @@ public class MovieDAO {
  		   vo.setNation(rs.getString(9));
  		   vo.setTime(rs.getString(10));
  		   vo.setShowUser(rs.getInt(11));
+ 		   vo.setScore(rs.getDouble(12));
  		   rs.close();
  	   }catch(Exception ex)
  	   {
