@@ -13,12 +13,14 @@ import com.sist.vo.*;
 
 @Controller
 public class MemberModel {
+	// 1. 회원가입 페이지
 	@RequestMapping("member/join.do")
 	public String member_join(HttpServletRequest request, HttpServletResponse response) {
 		request.setAttribute("main_jsp", "../member/join.jsp");
 		return "../main/main.jsp";
 	}
 	
+	// 1-1. 회원가입 ▶ ID 중복체크
 	@RequestMapping("member/idcheck.do")
 	public String member_idcheck(HttpServletRequest request, HttpServletResponse response) {
 		//사용자가 보내준 ID 받기
@@ -33,29 +35,28 @@ public class MemberModel {
 		return "../member/idcheck_result.jsp";
 	}
 	
+	// 1-2. 회원가입 ▶ 우편번호 찾기
 	@RequestMapping("member/postfind.do")
 	  public String member_postfind(HttpServletRequest request,HttpServletResponse response){
 		 try
 		  {
 			  request.setCharacterEncoding("UTF-8");//디코딩 => post방식일때만 사용
 		  }catch(Exception ex) {}
-			//사용자가 보내준 dong 받기
-		 	String dong=request.getParameter("dong");
-		 	
-		 	// DAO를 연결해서 데이터 읽기
-		 	MemberDAO dao=MemberDAO.newInstance();
-		 	List<ZipcodeVO> list=dao.postfind(dong);
-		 	int count=dao.postfindCount(dong);
-		  // postfind_result.jsp에 출력하기 위해서 데이터를 보내준다 (request,session)
-		  /*
-		   *  request : 해당 페이지에서만 출력할때
-		   *  session : 기간,여러군데 jsp에서 사용  ==> 개인 정보를 서버에 저장 (로그인,장바구니)
-		   */
-		  request.setAttribute("list", list);
-		  request.setAttribute("count", count);
-		  return "../member/postfind_result.jsp";
+		 //사용자가 보내준 dong 받기
+		 String dong=request.getParameter("dong");
+		 
+		 // DAO를 연결해서 데이터 읽기
+		 MemberDAO dao=MemberDAO.newInstance();
+		 List<ZipcodeVO> list=dao.postfind(dong);
+		 int count=dao.postfindCount(dong);
+		 
+		 //결과값 넘기기
+		 request.setAttribute("list", list);
+		 request.setAttribute("count", count);
+		 return "../member/postfind_result.jsp";
 	  }
-		
+	
+	// 1-3. 회원가입 완료
 	@RequestMapping("member/join_ok.do")
 	  public String member_join_ok(HttpServletRequest request,HttpServletResponse response)
 	  {

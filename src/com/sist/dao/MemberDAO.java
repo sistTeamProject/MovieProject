@@ -41,6 +41,7 @@ public class MemberDAO {
 	    	return dao;
 	    }
 	    
+	    
 	    //▼ 기능
 	    //3-1. 아이디 중복 체크
 	    public int memberidCheck(String id)
@@ -49,7 +50,7 @@ public class MemberDAO {
 	  	  try
 	  	  {
 	  		  getConnection();
-	  		  String sql="SELECT COUNT(*) FROM project_member "
+	  		  String sql="SELECT COUNT(*) FROM movie_member "
 	  				    +"WHERE id=?";
 	  		  ps=conn.prepareStatement(sql);
 	  		  ps.setString(1,id);
@@ -137,8 +138,8 @@ public class MemberDAO {
 	  	  try
 	  	  {
 	  		  getConnection();
-	  		  String sql="INSERT INTO project_member VALUES(?,?,?,?,?,"
-	  				   +"?,?,?,?,?,'n')"; // admin(n=일반회원,y=관리자)
+	  		  //id,pwd,name,sex,birthday, email,post,addr1,addr2,tel, admin,profile
+	  		  String sql="INSERT INTO movie_member VALUES(?,?,?,?,?,?,?,?,?,?,'n',?)"; // admin(n=일반회원,y=관리자)
 	  		  ps=conn.prepareStatement(sql);
 	  		  ps.setString(1, vo.getId());
 	  		  ps.setString(2, vo.getPwd());
@@ -150,7 +151,7 @@ public class MemberDAO {
 	  		  ps.setString(8, vo.getAddr1());
 	  		  ps.setString(9, vo.getAddr2());
 	  		  ps.setString(10, vo.getTel());
-	  		  
+	  		  ps.setString(11, vo.getProfile());
 	  		  ps.executeUpdate();
 	  	  }catch(Exception ex)
 	  	  {
@@ -171,7 +172,7 @@ public class MemberDAO {
 	  	  {
 	  		  getConnection();
 	  		  String sql="SELECT COUNT(*) "
-	  				    +"FROM project_member "
+	  				    +"FROM movie_member "
 	  				    +"WHERE id=?";
 	  		  ps=conn.prepareStatement(sql); //id가 존재하는지 체크
 	  		  ps.setString(1, id);
@@ -187,7 +188,7 @@ public class MemberDAO {
 	  		  }
 	  		  else // ID 있음
 	  		  {
-	  			  sql="SELECT pwd,name,admin FROM project_member "
+	  			  sql="SELECT pwd,name,admin FROM movie_member "
 	  				 +"WHERE id=?";
 	  			  ps=conn.prepareStatement(sql);
 	  			  ps.setString(1, id);
