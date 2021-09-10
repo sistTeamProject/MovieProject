@@ -77,7 +77,7 @@ public class MovieDAO {
     				+"FROM movie WHERE cno=1 ORDER BY mno ASC)) "
     				+"WHERE num BETWEEN ? AND ?";
     		ps=conn.prepareStatement(sql);
-    		int rowSize=20;
+    		int rowSize=12;
     		int start=(rowSize*page)-(rowSize-1);
     		int end=rowSize*page;
     		
@@ -92,9 +92,13 @@ public class MovieDAO {
     			vo.setTitle(rs.getString(2));
     			vo.setPoster(rs.getString(3));
     			vo.setGenre(rs.getString(4));
-    			String grade=rs.getString(5);
-    	 		grade=grade.trim().substring(grade.indexOf("]")+1,grade.indexOf("가")+1);
-    	 		vo.setGrade(grade);
+    			// null 값 방지
+    			try 
+    			{
+    				String grade=rs.getString(5);
+    				grade=grade.trim().substring(grade.indexOf("]")+1,grade.indexOf("가")+1);
+    				vo.setGrade(grade);
+    			}catch(Exception ex) {}
     			vo.setScore(rs.getDouble(6));
     			vo.setReserve(rs.getString(7));
     			list.add(vo);
@@ -123,7 +127,7 @@ public class MovieDAO {
     				+"FROM movie WHERE cno=2 ORDER BY mno ASC)) "
     				+"WHERE num BETWEEN ? AND ?";
     		ps=conn.prepareStatement(sql);
-    		int rowSize=20;
+    		int rowSize=12;
     		int start=(rowSize*page)-(rowSize-1);
     		int end=rowSize*page;
     		
@@ -138,9 +142,13 @@ public class MovieDAO {
     			vo.setTitle(rs.getString(2));
     			vo.setPoster(rs.getString(3));
     			vo.setGenre(rs.getString(4));
-    			String grade=rs.getString(5);
-    	 		grade=grade.trim().substring(grade.indexOf("]")+1,grade.indexOf("가")+1);
-    	 		vo.setGrade(grade);
+    			// null값 방지
+    			try 
+    			{
+    				String grade=rs.getString(5);
+    				grade=grade.trim().substring(grade.indexOf("]")+1,grade.indexOf("가")+1);
+    				vo.setGrade(grade);
+    			}catch(Exception ex) {}
     	 		vo.setRegdate(rs.getString(6));
     			list.add(vo);
     		}
@@ -172,9 +180,13 @@ public class MovieDAO {
  		   vo.setPoster(rs.getString(2));
  		   vo.setTitle(rs.getString(3));
  		   vo.setGenre(rs.getString(4));
- 		   String grade=rs.getString(5);
- 		   grade=grade.trim().substring(grade.indexOf("]")+1,grade.indexOf("가")+1);
- 		   vo.setGrade(grade);
+ 		   // null값 방지
+ 		   try 
+			{
+				String grade=rs.getString(5);
+				grade=grade.trim().substring(grade.indexOf("]")+1,grade.indexOf("가")+1);
+				vo.setGrade(grade);
+			}catch(Exception ex) {}
  		   vo.setRegdate(rs.getString(6));
  		   vo.setEngtitle(rs.getString(7));
  		   vo.setCno(rs.getInt(8));
@@ -194,13 +206,36 @@ public class MovieDAO {
  	   return vo;
     }
     // 총페이지
-    public int movieTotalPage()
+    public int RelmovieTotalPage()
     {
  	   int total=0;
  	   try
  	   {
  		   getConnection();
- 		   String sql="SELECT CEIL(COUNT(*)/20.0) FROM movie";
+ 		   String sql="SELECT CEIL(COUNT(*)/12.0) FROM movie WHERE cno=1";
+ 		   ps=conn.prepareStatement(sql);
+ 		   ResultSet rs=ps.executeQuery();
+ 		   rs.next();
+ 		   total=rs.getInt(1);
+ 		   rs.close();
+ 	   }catch(Exception ex)
+ 	   {
+ 		   ex.printStackTrace();
+ 	   }
+ 	   finally
+ 	   {
+ 		   disConnection();
+ 	   }
+ 	   return total;
+ 	   
+    }
+    public int SchmovieTotalPage()
+    {
+ 	   int total=0;
+ 	   try
+ 	   {
+ 		   getConnection();
+ 		   String sql="SELECT CEIL(COUNT(*)/12.0) FROM movie WHERE cno=2";
  		   ps=conn.prepareStatement(sql);
  		   ResultSet rs=ps.executeQuery();
  		   rs.next();

@@ -11,7 +11,7 @@ import com.sist.dao.*;
 import com.sist.vo.MovieVO;
 @Controller
 public class MovieModel {
-	
+	// 현재 상영 영화 총페이지
 	@RequestMapping("movieinfo/relmovie.do")
 	public String real_movie(HttpServletRequest request, HttpServletResponse response)
 	{
@@ -21,7 +21,7 @@ public class MovieModel {
 		int curpage=Integer.parseInt(page);
 		MovieDAO dao=new MovieDAO();
 		List<MovieVO> list=dao.movieRealData(curpage);
-		int totalpage=dao.movieTotalPage();
+		int totalpage=dao.RelmovieTotalPage();
 		  
 		request.setAttribute("curpage", curpage);//현재페이지
 		request.setAttribute("totalpage", totalpage);//총페이지
@@ -39,7 +39,7 @@ public class MovieModel {
 		int curpage=Integer.parseInt(page);
 		MovieDAO dao=new MovieDAO();
 		List<MovieVO> list=dao.movieSchData(curpage);
-		int totalpage=dao.movieTotalPage();
+		int totalpage=dao.SchmovieTotalPage();
 		  
 		request.setAttribute("curpage", curpage);//현재페이지
 		request.setAttribute("totalpage", totalpage);//총페이지

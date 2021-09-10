@@ -38,9 +38,9 @@
                             <div class="col-lg-3">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg="${vo.poster }" style="width:270px;height:400px;cursor:pointer" OnClick="location.href ='details.do?mno=${vo.mno }'">
-                                        <div class="ep">18 / 18</div>
+                                        <!-- <div class="ep">18 / 18</div>
                                         <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9141</div> -->
                                     </div>
                                     <div class="product__item__text">
                                     <h3>
@@ -64,14 +64,18 @@
                             </c:forEach>
                         </div>
                     </div>
-                    <div class="product__pagination">
-                        <a href="#" class="current-page">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#"><i class="fa fa-angle-double-right"></i></a>
-                    </div>
+                    <div class="product__pagination inline" align="center">
+                    	<c:forEach var="i" begin="1" end="${totalpage }">
+                        	<c:if test="${curpage==i }">
+                        		<c:set var="ss" value="current-page"/>
+                        	</c:if>
+                        	<c:if test="${curpage!=i }">
+                        		<c:set var="ss" value=""/>
+                        	</c:if>
+                        <a href="../movieinfo/relmovie.do?page=${i }">${i}</a>
+                        </c:forEach>
+                        <!-- <a href="#"><i class="fa fa-angle-double-right"></i></a> -->
+                    </div> 
                 </div>
 
 </div>
