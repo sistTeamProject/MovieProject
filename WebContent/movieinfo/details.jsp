@@ -10,9 +10,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Anime | Template</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style type="text/css">
-.los{
-	display:block;
+nav {
+  margin: 0 auto;
+  background-color:transparent;
+}
+nav ul {
+  text-align: center;
+}
+nav ul li {
+  display: inline-block;
+  font-size: 30px;
+  text-color:white;
+  text-transform:uppercase;
+}
+nav ul li a {
+  padding: 35px;
+  display: block;
+}
+nav ul li a:hover {
+  color:orange;
 }
 </style>
     <!-- Google Font -->
@@ -21,7 +41,7 @@
     rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+    <!--<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">-->
     <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="../css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="../css/plyr.css" type="text/css">
@@ -101,14 +121,17 @@
     <section class="anime-details spad">
         <div class="container">
             <div class="anime__details__content">
-                <div class="row">
+                <div class="row" style="margin:70px;">
                     <div class="col-lg-3">
-                        <div class="anime__details__pic set-bg" data-setbg="${vo.poster }">
+                    	<div>
+                    		<img src="${vo.poster}" width="300" height="300">
+                    	</div>
+                        <%-- <div class="anime__details__pic set-bg" data-setbg="${vo.poster }" style="width:300px;height:450px;">
                             <div class="comment"><i class="fa fa-comments"></i> 11</div>
                             <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                        </div>
+                        </div> --%>
                     </div>
-                    <div class="col-lg-9">
+                    <div class="col-lg-6">
                         <div class="anime__details__text">
                             <div>
                             	<h3>
@@ -129,7 +152,7 @@
                                 <h6 style="color:white">${vo.engtitle }</h6>
                
                             </div>
-                            <div class="anime__details__rating">
+                            <!-- <div class="anime__details__rating">
                                 <div class="rating">
                                     <a href="#"><i class="fa fa-star"></i></a>
                                     <a href="#"><i class="fa fa-star"></i></a>
@@ -138,8 +161,8 @@
                                     <a href="#"><i class="fa fa-star-half-o"></i></a>
                                 </div>
                                 <span>1.029 Votes</span>
-                            </div>
-                            <p>${vo.story }</p>
+                            </div> -->
+                            
                             <div class="anime__details__widget">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
@@ -169,78 +192,18 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-lg-8 col-md-8">
-                        <div class="anime__details__review">
-                            <div class="section-title">
-                                <h5>Reviews</h5>
-                            </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__pic">
-                                    <img src="../img/anime/review-1.jpg" alt="">
-                                </div>
-                                <div class="anime__review__item__text">
-                                    <h6>Chris Curry - <span>1 Hour ago</span></h6>
-                                    <p>whachikan Just noticed that someone categorized this as belonging to the genre
-                                    "demons" LOL</p>
-                                </div>
-                            </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__pic">
-                                    <img src="../img/anime/review-2.jpg" alt="">
-                                </div>
-                                <div class="anime__review__item__text">
-                                    <h6>Lewis Mann - <span>5 Hour ago</span></h6>
-                                    <p>Finally it came out ages ago</p>
-                                </div>
-                            </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__pic">
-                                    <img src="../img/anime/review-3.jpg" alt="">
-                                </div>
-                                <div class="anime__review__item__text">
-                                    <h6>Louis Tyler - <span>20 Hour ago</span></h6>
-                                    <p>Where is the episode 15 ? Slow update! Tch</p>
-                                </div>
-                            </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__pic">
-                                    <img src="../img/anime/review-4.jpg" alt="">
-                                </div>
-                                <div class="anime__review__item__text">
-                                    <h6>Chris Curry - <span>1 Hour ago</span></h6>
-                                    <p>whachikan Just noticed that someone categorized this as belonging to the genre
-                                    "demons" LOL</p>
-                                </div>
-                            </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__pic">
-                                    <img src="../img/anime/review-5.jpg" alt="">
-                                </div>
-                                <div class="anime__review__item__text">
-                                    <h6>Lewis Mann - <span>5 Hour ago</span></h6>
-                                    <p>Finally it came out ages ago</p>
-                                </div>
-                            </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__pic">
-                                    <img src="../img/anime/review-6.jpg" alt="">
-                                </div>
-                                <div class="anime__review__item__text">
-                                    <h6>Louis Tyler - <span>20 Hour ago</span></h6>
-                                    <p>Where is the episode 15 ? Slow update! Tch</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="anime__details__form">
-                            <div class="section-title">
-                                <h5>Your Comment</h5>
-                            </div>
-                            <form action="#">
-                                <textarea placeholder="Your Comment"></textarea>
-                                <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
-                            </form>
-                        </div>
+                        
+                        <nav>
+  							<ul>
+   								<li><a href="../movieinfo/detail_story.jsp">줄거리</a></li>
+   								<li><a href="../movieinfo/detail_people.jsp">출연/제작</a></li>
+    							<li><a href="../movieinfo/detail_video.jsp">예고편</a></li>
+  							</ul>
+  							
+						</nav>
                     </div>
                     <div class="col-lg-4 col-md-4">
                         <div class="anime__details__sidebar">
@@ -271,6 +234,7 @@
                     </div>
                 </div>
             </div>
+           </div>
         </section>
         <!-- Anime Section End -->
 

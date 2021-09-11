@@ -169,7 +169,7 @@ public class MovieDAO {
  	   try
  	   {
  		   getConnection();
- 		   String sql="SELECT mno,poster,title,genre,grade,regdate,engtitle,cno,nation,time,showUser,score "
+ 		   String sql="SELECT mno,poster,title,genre,grade,regdate,engtitle,cno,nation,time,showUser,score,story,actor,director,key "
  				     +"FROM movie "
  				     +"WHERE mno=?";
  		   ps=conn.prepareStatement(sql);
@@ -194,6 +194,10 @@ public class MovieDAO {
  		   vo.setTime(rs.getString(10));
  		   vo.setShowUser(rs.getInt(11));
  		   vo.setScore(rs.getDouble(12));
+ 		   vo.setStory(rs.getString(13));
+ 		   vo.setActor(rs.getString(14));
+ 		   vo.setDirector(rs.getString(15));
+ 		   vo.setKey(rs.getString(16));
  		   rs.close();
  	   }catch(Exception ex)
  	   {

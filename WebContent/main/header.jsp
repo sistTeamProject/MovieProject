@@ -23,7 +23,7 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
-                                <li class="active"><a href="./index.html">Homepage</a></li>
+                                <li class="active"><a href="../main/main.do">Homepage</a></li>
                                 <li><a href="#">예매</a></li>
                                 <li><a href="#">영화</a>
                                     <ul class="dropdown">
