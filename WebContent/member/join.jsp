@@ -209,12 +209,12 @@ $(function(){
        </tr>
        <tr>
          <th class="text-center" width=20%>전화번호</th>
-         <td width=85% class="inline">
+         <td width=85% class="inline" style="color: black">
            <select name=tel1 class="input-sm">
             <option>010</option>
            </select>-
            <input type=text name=tel2 size=7 class="input-sm" id=tel2>-
-           <input type=text name=tel2 size=7 class="input-sm" id=tel3>
+           <input type=text name=tel3 size=7 class="input-sm" id=tel3>
          </td>
        </tr>
        <tr>

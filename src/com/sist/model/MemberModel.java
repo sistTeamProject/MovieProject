@@ -60,8 +60,6 @@ public class MemberModel {
 	@RequestMapping("member/join_ok.do")
 	  public String member_join_ok(HttpServletRequest request,HttpServletResponse response)
 	  {
-		  System.out.println("회원 데이터 전송완료");
-		  // 사용자가 보내준 데이터를 받는다 
 		  try
 		  {
 			  request.setCharacterEncoding("UTF-8");
@@ -78,6 +76,7 @@ public class MemberModel {
 		  String addr2=request.getParameter("addr2");
 		  String tel1=request.getParameter("tel1");// UNIQUE => 아이디 찾기 (후보키)
 		  String tel2=request.getParameter("tel2");//
+		  String tel3=request.getParameter("tel3");//
 		  
 		  MemberVO vo=new MemberVO();
 		  vo.setId(id);
@@ -85,61 +84,71 @@ public class MemberModel {
 		  vo.setName(name);
 		  vo.setSex(sex);
 		  vo.setBirthday(birthday);
-		  vo.setPost(post1+"-"+post2);
 		  vo.setEmail(email);
+		  vo.setPost(post1+"-"+post2);
 		  vo.setAddr1(addr1);
 		  vo.setAddr2(addr2);
-		  vo.setTel(tel1+"-"+tel2);
+		  vo.setTel(tel1+"-"+tel2+"-"+tel3);
 		  // DAO로 전송 
 		  MemberDAO dao=MemberDAO.newInstance();
 		  dao.memberJoinInsert(vo);
+		  
 		  return "redirect:../main/main.do";// main에서 회원가입 데이터가 필요가 없다 (request초기화)
 		  // sendRedirect() ==> DispatcherServlet => redirect:
 	  }
 	
-		@RequestMapping("member/login.do")
-		public String member_login(HttpServletRequest request, HttpServletResponse response) {
-			request.setAttribute("main_jsp", "../member/login.jsp");
+	@RequestMapping("member/login.do")
+	public String member_login(HttpServletRequest request,HttpServletResponse response) {
+		String id=request.getParameter("id");
+		String pwd=request.getParameter("pwd");
+		
+		MemberDAO dao=MemberDAO.newInstance();
+		String result=dao.isLogin(id, pwd);
+		if(!(result.equals("NOID")||result.equals("NOPWD"))) {
+			HttpSession session=request.getSession();
+			StringTokenizer st=new StringTokenizer(result,"|");
+			String name=st.nextToken();
+			String admin=st.nextToken();
+			//
+			session.setAttribute("id", id);
+			session.setAttribute("admin", admin);
+			session.setAttribute("name", name);
+			result="OK";
+		}
+		request.setAttribute("result", result);
+		request.setAttribute("main_jsp", "../member/login.jsp");
 		return "../main/main.jsp";
+	}
+
+	
+	@RequestMapping("member/login_result.do")
+		public String member_login_result(HttpServletRequest request,HttpServletResponse response) {
+			String id=request.getParameter("id");
+			String pwd=request.getParameter("pwd");
+			
+			MemberDAO dao=MemberDAO.newInstance();
+			String result=dao.isLogin(id, pwd);
+			if(!(result.equals("NOID")||result.equals("NOPWD"))) {
+				HttpSession session=request.getSession();
+				StringTokenizer st=new StringTokenizer(result,"|");
+				String name=st.nextToken();
+				String admin=st.nextToken();
+				//
+				session.setAttribute("id", id);
+				session.setAttribute("admin", admin);
+				session.setAttribute("name", name);
+				result="OK";
+			}
+			request.setAttribute("result", result);
+			return "../member/login_result.jsp";
 		}
 	
-	  @RequestMapping("member/login_result.do")
-	  public String member_login_result(HttpServletRequest request,HttpServletResponse response)
-	  {
-		  // 사용자 전송한 id,pwd
-		  String id=request.getParameter("id");
-		  String pwd=request.getParameter("pwd");
-		  // DAO로 전송 => 결과값을 받아서 => login_result.jsp 전송 (출력=>main.jsp에 읽어간다)
-		  MemberDAO dao=MemberDAO.newInstance();
-		  // 메소드 호출 
-		  String result=dao.isLogin(id, pwd);
-		  if(!(result.equals("NOID")|| result.equals("NOPWD")))
-		  {
-			  HttpSession session=request.getSession(); // 세션 사용 
-			  // 세션/쿠키 => request를 이용한다  (request.getCookie())
-			  StringTokenizer st=new StringTokenizer(result,"|");
-			  String name=st.nextToken();
-			  String admin=st.nextToken();
-			  
-			  // 세션에 저장 
-			  session.setAttribute("id", id);
-			  session.setAttribute("admin", admin);
-			  session.setAttribute("name", name);
-			  result="OK";
-		  }
-		  request.setAttribute("result", result);
-		  return "../member/login_result.jsp";
-	  }
-	  
-  
-	  
-	  @RequestMapping("member/logout.do")
-	  public String member_logout(HttpServletRequest request,HttpServletResponse response)
-	  {
-		  HttpSession session=request.getSession();
-		  session.invalidate(); // 데이터 전체 삭제
-		  return "redirect:../main/main.do";
-	  }
+	@RequestMapping("member/logout.do")
+	public String member_logout(HttpServletRequest request,HttpServletResponse response) {
+		HttpSession session=request.getSession();
+		session.invalidate();
+		return "redirect:../main/main.do";
+	}
 	
 	@RequestMapping("member/mypage.do")
 	public String member_mypage(HttpServletRequest request, HttpServletResponse response) {

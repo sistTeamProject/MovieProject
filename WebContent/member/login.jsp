@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+${result}
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,10 +25,11 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+	<link rel="stylesheet" href="../shadow/css/shadowbox.css">
 
 </head>
 <body>
-    <!-- Normal Breadcrumb Begin -->
+     <!-- Normal Breadcrumb Begin -->
     <section class="normal-breadcrumb set-bg">
         <div class="container">
             <div class="row">
@@ -49,7 +51,7 @@
                 <div class="col-lg-6">
                     <div class="login__form">
                         <h3>Login</h3>
-                        <form action="#">
+                        <form action="../main/main.do">
                             <div class="input__item">
                                 <input type="text" placeholder="Email address">
                                 <span class="icon_mail"></span>
