@@ -24,6 +24,15 @@
     <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../css/style.css" type="text/css">
+<script type="text/javascript">
+function check(){
+	let f=$('#search-input').val()
+	if(f.trim()==""){
+		$('#search-input').focus()
+		return false;
+	}else return true
+};
+</script>
 </head>
 
 <body>
@@ -40,9 +49,9 @@
   <div class="search-model">
     <div class="h-100 d-flex align-items-center justify-content-center">
         <div class="search-close-switch">close</div>
-        <form class="search-model-form">
-            <input type="text" id="search-input" placeholder="검색어를 입력하세요...">
-            <input type="button" value=&#xf002; class="searchBtn fas" style="width: 100px;border: none;">
+        <form class="search-model-form" onsubmit="return check()" method="get" action="../search/search.do">
+            <input type="text" name="fd" id="search-input" placeholder="검색어를 입력하세요...">
+            <input type="submit" value=&#xf002; class="fas" style="width: 100px;border: none;">
         </form>
     </div>
 </div>
