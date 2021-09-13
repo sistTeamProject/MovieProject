@@ -35,6 +35,21 @@ nav ul li a:hover {
   color:orange;
 }
 </style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function({
+	$('#detail_story').click(function(){
+		$.ajax({
+			url:'../movieinfo/detail_story.do',
+			type:'post',
+			success:function(res)
+			{
+				$('#printpage').html(res)
+			}
+		})
+	})
+})
+</script>
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
@@ -131,7 +146,7 @@ nav ul li a:hover {
                             <div class="view"><i class="fa fa-eye"></i> 9141</div>
                         </div> --%>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-8">
                         <div class="anime__details__text">
                             <div>
                             	<h3>
@@ -163,9 +178,9 @@ nav ul li a:hover {
                                 <span>1.029 Votes</span>
                             </div> -->
                             
-                            <div class="anime__details__widget">
+                            <div class="anime__details__widget" style="margin-top:20px">
                                 <div class="row">
-                                    <div class="col-lg-6 col-md-6">
+                                    <div class="col-lg-6 col-md-8">
                                         <ul>
                                             <li><span>개봉일</span> ${vo.regdate }</li> 
                                             <li><span>장르</span> ${vo.genre }</li>
@@ -174,7 +189,7 @@ nav ul li a:hover {
                                             <li><span>러닝타임</span> ${vo.time }</li>
                                         </ul>
                                     </div>
-                                    <div class="col-lg-6 col-md-6">
+                                    <div class="col-lg-6 col-md-4">
                                         <ul>
                                             <li><span>평점</span>${vo.score }</li>
                                             <li><span>누적 관객</span>${vo.showUser }명</li>    
@@ -198,13 +213,18 @@ nav ul li a:hover {
                         
                         <nav>
   							<ul>
-   								<li><a href="../movieinfo/detail_story.jsp">줄거리</a></li>
-   								<li><a href="../movieinfo/detail_people.jsp">출연/제작</a></li>
-    							<li><a href="../movieinfo/detail_video.jsp">예고편</a></li>
+   								<li><a href="#" class="detail_print" id="detail_story">줄거리</a></li>
+   								<li><a href="#" class="detail_print" id="detail_people">출연/제작</a></li>
+    							<li><a href="#" class="detail_print" id="detail_video">예고편</a></li>
   							</ul>
   							
 						</nav>
+						
+						<div class="printpage" id="printpage">
+                    	
+                  	  	</div>
                     </div>
+                    
                     <div class="col-lg-4 col-md-4">
                         <div class="anime__details__sidebar">
                             <div class="section-title">
