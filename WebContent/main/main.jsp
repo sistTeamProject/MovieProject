@@ -39,9 +39,10 @@
   <!-- Search model Begin -->
   <div class="search-model">
     <div class="h-100 d-flex align-items-center justify-content-center">
-        <div class="search-close-switch"><i class="icon_close"></i></div>
+        <div class="search-close-switch">close</div>
         <form class="search-model-form">
-            <input type="text" id="search-input" placeholder="Search here.....">
+            <input type="text" id="search-input" placeholder="검색어를 입력하세요...">
+            <input type="button" value=&#xf002; class="searchBtn fas" style="width: 100px;border: none;">
         </form>
     </div>
 </div>
@@ -56,7 +57,7 @@
 <script src="../js/jquery.slicknav.js"></script>
 <script src="../js/owl.carousel.min.js"></script>
 <script src="../js/main.js"></script>
-
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
 </body>
 </html>
