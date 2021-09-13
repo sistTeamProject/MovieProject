@@ -256,5 +256,33 @@ public class MovieDAO {
  	   return total;
  	   
     }
+    public List<MovieVO> searchMovieData(String fd,String type){
+    	List<MovieVO> list=new ArrayList<MovieVO>();
+    	try {
+    		getConnection();
+    		String sql="SELECT mno,poster,title,grade,actor,director,reserve "
+    				+ "FROM movie WHERE "+type+" LIKE '%'||?||'%' ORDER BY reserve DESC";
+    		ps=conn.prepareStatement(sql);
+    		ps.setString(1, fd);
+    		ResultSet rs=ps.executeQuery();
+    		while(rs.next()) {
+    			MovieVO vo=new MovieVO();
+    			vo.setMno(rs.getInt(1));
+    			vo.setPoster(rs.getString(2));
+    			vo.setTitle(rs.getString(3));
+    			vo.setGrade(rs.getString(4));
+    			vo.setActor(rs.getString(5));
+    			vo.setDirector(rs.getString(6));
+    			vo.setReserve(rs.getString(7));
+    			list.add(vo);
+    		}
+    		rs.close();
+    	}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			disConnection();
+		}
+    	return list;
+    }
 
 }
