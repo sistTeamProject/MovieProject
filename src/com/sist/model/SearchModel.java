@@ -20,7 +20,7 @@ public class SearchModel {
 		}catch (Exception e) {}
 		String fd=request.getParameter("fd");
 		//검색
-		MovieDAO dao=new MovieDAO();
+		MovieDAO dao=MovieDAO.newInstance();
 		List<MovieVO> tList=dao.searchMovieData(fd, "title");
 		List<MovieVO> dList=dao.searchMovieData(fd, "director");
 		List<MovieVO> aList=dao.searchMovieData(fd, "actor");

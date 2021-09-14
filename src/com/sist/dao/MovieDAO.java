@@ -16,6 +16,7 @@ public class MovieDAO {
 	
 	private Connection conn;
 	private PreparedStatement ps;
+	private static MovieDAO dao;
 	public void getConnection() {
 		try {
 			Context init=new InitialContext();
@@ -31,6 +32,11 @@ public class MovieDAO {
 			if(ps!=null) ps.close();
 			if(conn!=null) conn.close();
 		}catch(Exception ex) {}
+	}
+	public static MovieDAO newInstance() {
+		if(dao==null)
+			dao=new MovieDAO();
+		return dao;
 	}
 	// 데이터베이스 연결
 	public List<MovieVO> movieRankData(){
