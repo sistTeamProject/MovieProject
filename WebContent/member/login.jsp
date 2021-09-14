@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +31,7 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
     <script type="text/javascript">
     $(function(){
-    	$('#site-btn').click(function(){
+    	$('#logBtn').click(function(){
     		let id=$('#log_id').val();
     		if(id.trim()==""){
     			$('#log_id').focus();
@@ -42,9 +43,10 @@
     			return;
     		}
     		//입력된 경우 데이터 전송
+    		
     		$.ajax({
     			type:'post',
-    			url:'../member/login.do',
+    			url:'../member/login_result.do',
     			data:{"id":id,"pwd":pwd},
     			success:function(res){
     				let result=res.trim();
@@ -63,12 +65,13 @@
     				}
     			}
     		})
+    		
     	})
     	$('#logoutBtn').click(function(){
     		location.href="../member/logout.do";
     	})
     })
-    </script>
+</script>
 </head>
 <body>
      <!-- Normal Breadcrumb Begin -->
@@ -93,17 +96,17 @@
                 <div class="col-lg-6">
                     <div class="login__form">
                         <h3>Login</h3>
-                        <form action="../main/main.do">
+                        
                             <div class="input__item">
-                                <input type="text" placeholder="ID" id="log_id">
+                                <input type="text" placeholder="ID" name="id" id="log_id">
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
-                                <input type="password" placeholder="Password" id="log_pwd">
+                                <input type="password" placeholder="Password" name="pwd" id="log_pwd">
                                 <span class="icon_lock"></span>
                             </div>
-                            <button type="submit" class="site-btn">로그인</button>
-                        </form>
+                            <button type="button" class="site-btn" id="logBtn">로그인</button>
+                       
                         <a href="#" class="forget_pass">ID/비밀번호 찾기</a>
                     </div>
                 </div>
@@ -120,9 +123,9 @@
                         <div class="login__social__links">
                             <span>or</span>
                             <ul>
-                                <li><a href="#" class="facebook"><i class="fa fa-facebook"></i> Sign in With Facebook</a></li>
-                                <li><a href="#" class="google"><i class="fa fa-google"></i> Sign in With Google</a></li>
-                                <li><a href="#" class="twitter"><i class="fa fa-twitter"></i> Sign in With Twitter</a>
+                                <li><a href="#" class="facebook"><i class="social_facebook"></i> Sign in With Facebook</a></li>
+                                <li><a href="#" class="google"><i class="social_googleplus"></i> Sign in With Google</a></li>
+                                <li><a href="#" class="twitter"><i class="social_twitter"></i> Sign in With Twitter</a>
                                 </li>
                             </ul>
                         </div>

@@ -6,6 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#logoutBtn').click(function(){
+		location.href="../member/logout.do";
+	})
+})
+</script>
 </head>
 <body>
     <!-- Header Section Begin -->
@@ -52,8 +60,18 @@
                     </div>
                 </div>
                 <div class="col-lg-2">
-                    <div class="header__right">
-						<a href="../member/login.do" style="color: white;" class="search-switch fas">로그인</a>
+                    <div class="header__right inline">
+                    <c:if test="${sessionScope.id==null }">
+                    	<a href="../member/login.do" style="color: white;" class="search-switch fas">로그인</a>
+                    </c:if>
+					<c:if test="${sessionScope.id!=null }">
+						  <tr>
+						  	<td>${sessionScope.name }(${sessionScope.admin=='y'?"관리자":"일반유저" })</td>
+						  	<td>로그인
+						  	  <input type="button" value="로그아웃" class="search-switch fas" id="logoutBtn">&nbsp
+						  	</td>
+						  </tr>
+					</c:if>                    
 						<a href="#" style="color: white;cursor: pointer;" class="search-switch fas">&#xf002;</a>
 					</div>
                 </div>

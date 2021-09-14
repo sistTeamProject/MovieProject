@@ -99,23 +99,7 @@ public class MemberModel {
 	
 	@RequestMapping("member/login.do")
 	public String member_login(HttpServletRequest request,HttpServletResponse response) {
-		String id=request.getParameter("id");
-		String pwd=request.getParameter("pwd");
 		
-		MemberDAO dao=MemberDAO.newInstance();
-		String result=dao.isLogin(id, pwd);
-		if(!(result.equals("NOID")||result.equals("NOPWD"))) {
-			HttpSession session=request.getSession();
-			StringTokenizer st=new StringTokenizer(result,"|");
-			String name=st.nextToken();
-			String admin=st.nextToken();
-			//
-			session.setAttribute("id", id);
-			session.setAttribute("admin", admin);
-			session.setAttribute("name", name);
-			result="OK";
-		}
-		request.setAttribute("result", result);
 		request.setAttribute("main_jsp", "../member/login.jsp");
 		return "../main/main.jsp";
 	}
@@ -139,8 +123,8 @@ public class MemberModel {
 				session.setAttribute("name", name);
 				result="OK";
 			}
-			request.setAttribute("result", result);
-			return "../member/login_result.jsp";
+			  request.setAttribute("result", result);
+			  return "../member/login_result.jsp";
 		}
 	
 	@RequestMapping("member/logout.do")
