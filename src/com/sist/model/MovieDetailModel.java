@@ -24,8 +24,8 @@ public class MovieDetailModel {
 		  return "../main/main.jsp";
 		  //return "../movieinfo/details.jsp";
 	  }
-	/*
-	@RequestMapping("movieinfo/details.do")
+	
+	@RequestMapping("movieinfo/details_story.do")
 	public String detail_story(HttpServletRequest request,HttpServletResponse response)
 	{
 		String mno=request.getParameter("mno");
@@ -33,11 +33,10 @@ public class MovieDetailModel {
 		MovieVO vo=dao.movieDetailData(Integer.parseInt(mno));
 		String actor=vo.getActor();
 		vo.setAct1(actor);
-		request.setAttribute("vo", vo);
-		
-		return "../movieinfo/details.jsp";
+
+		return "redirect:../movieinfo/details.do?mno="+mno;
 	}
-	*/
+	
 	
 	
 	
