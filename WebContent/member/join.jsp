@@ -143,12 +143,13 @@ $(function(){
     <div class="row">
     <form method="post" action="../member/join_ok.do" id="joinFrm" name="joinFrm">
      <table class="table"  style="color: white">
+      <!--
        <tr>
          <th class="text-center" width=20%>프로필사진</th>
          <td width=30% height=80%>
            <input type=file value="사진업로드" id=profileBtn class="btn btn-sm">
          </td>
-       </tr>
+       </tr>-->
        <tr style="color: white">
          <th class="text-center" width=20%>ID</th>
          <td width=85% class="inline">
