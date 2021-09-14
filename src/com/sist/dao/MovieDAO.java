@@ -74,7 +74,7 @@ public class MovieDAO {
     		String sql="SELECT mno,title,poster,genre,grade,score,reserve,num "
     				+"FROM (SELECT mno,title,poster,genre,grade,cno,score,reserve,rownum as num "
     				+"FROM (SELECT mno,title,poster,genre,grade,cno,score,reserve "
-    				+"FROM movie WHERE cno=1 ORDER BY reserve DESC)) "
+    				+"FROM movie WHERE cno=1 ORDER BY mno ASC)) "
     				+"WHERE num BETWEEN ? AND ?";
     		ps=conn.prepareStatement(sql);
     		int rowSize=12;
@@ -124,7 +124,7 @@ public class MovieDAO {
     		String sql="SELECT mno,title,poster,genre,grade,regdate,num "
     				+"FROM (SELECT mno,title,poster,genre,grade,cno,regdate,rownum as num "
     				+"FROM (SELECT mno,title,poster,genre,grade,cno,regdate "
-    				+"FROM movie WHERE cno=2 ORDER BY reserve DESC)) "
+    				+"FROM movie WHERE cno=2 ORDER BY mno ASC)) "
     				+"WHERE num BETWEEN ? AND ?";
     		ps=conn.prepareStatement(sql);
     		int rowSize=12;
