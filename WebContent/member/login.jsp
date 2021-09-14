@@ -110,7 +110,7 @@
                 <div class="col-lg-6">
                     <div class="login__register">
                         <h3>계정이 없으십니까?</h3>
-                        <a href="member/join.do" class="primary-btn">회원가입</a>
+                        <a href="join.do" class="primary-btn">회원가입</a>
                     </div>
                 </div>
             </div>
