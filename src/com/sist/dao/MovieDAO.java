@@ -54,7 +54,7 @@ public class MovieDAO {
     	 		grade=grade.trim().substring(grade.indexOf("]")+1,grade.indexOf("가")+1);
     	 		vo.setGrade(grade);
     			vo.setScore(rs.getDouble(6));
-    			vo.setReserve(rs.getString(7));
+    			vo.setReserve(rs.getDouble(7));
     			list.add(vo);
 			}
 			rs.close();
@@ -74,7 +74,7 @@ public class MovieDAO {
     		String sql="SELECT mno,title,poster,genre,grade,score,reserve,num "
     				+"FROM (SELECT mno,title,poster,genre,grade,cno,score,reserve,rownum as num "
     				+"FROM (SELECT mno,title,poster,genre,grade,cno,score,reserve "
-    				+"FROM movie WHERE cno=1 ORDER BY mno ASC)) "
+    				+"FROM movie WHERE cno=1 ORDER BY reserve DESC)) "
     				+"WHERE num BETWEEN ? AND ?";
     		ps=conn.prepareStatement(sql);
     		int rowSize=12;
@@ -100,7 +100,7 @@ public class MovieDAO {
     				vo.setGrade(grade);
     			}catch(Exception ex) {}
     			vo.setScore(rs.getDouble(6));
-    			vo.setReserve(rs.getString(7));
+    			vo.setReserve(rs.getDouble(7));
     			list.add(vo);
     		}
     	}catch(Exception ex)
@@ -124,7 +124,7 @@ public class MovieDAO {
     		String sql="SELECT mno,title,poster,genre,grade,regdate,num "
     				+"FROM (SELECT mno,title,poster,genre,grade,cno,regdate,rownum as num "
     				+"FROM (SELECT mno,title,poster,genre,grade,cno,regdate "
-    				+"FROM movie WHERE cno=2 ORDER BY mno ASC)) "
+    				+"FROM movie WHERE cno=2 ORDER BY reserve DESC)) "
     				+"WHERE num BETWEEN ? AND ?";
     		ps=conn.prepareStatement(sql);
     		int rowSize=12;
@@ -256,5 +256,33 @@ public class MovieDAO {
  	   return total;
  	   
     }
-
+    public List<MovieVO> searchMovieData(String fd,String type){
+    	List<MovieVO> list=new ArrayList<MovieVO>();
+    	try {
+    		getConnection();
+    		String sql="SELECT mno,poster,title,grade,actor,director,reserve "
+    				+ "FROM movie WHERE "+type+" LIKE '%'||?||'%' ORDER BY reserve DESC";
+    		ps=conn.prepareStatement(sql);
+    		ps.setString(1, fd);
+    		ResultSet rs=ps.executeQuery();
+    		while(rs.next()) {
+    			MovieVO vo=new MovieVO();
+    			vo.setMno(rs.getInt(1));
+    			vo.setPoster(rs.getString(2));
+    			vo.setTitle(rs.getString(3));
+    			vo.setGrade(rs.getString(4));
+    			vo.setActor(rs.getString(5));
+    			vo.setDirector(rs.getString(6));
+    			vo.setReserve(rs.getString(7));
+    			list.add(vo);
+    		}
+    		rs.close();
+    	}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			disConnection();
+		}
+    	return list;
+    }
+    
 }
