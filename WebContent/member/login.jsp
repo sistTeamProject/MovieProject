@@ -24,10 +24,54 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-
+	<link rel="stylesheet" href="../shadow/css/shadowbox.css">
+    
+    <!-- Script -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript">
+    $(function(){
+    	$('#site-btn').click(function(){
+    		let id=$('#log_id').val();
+    		if(id.trim()==""){
+    			$('#log_id').focus();
+    			return;
+    		}
+    		let pwd=$('#log_pwd').val();
+    		if(pwd.trim()==""){
+    			$('#log_pwd').focus();
+    			return;
+    		}
+    		//입력된 경우 데이터 전송
+    		$.ajax({
+    			type:'post',
+    			url:'../member/login.do',
+    			data:{"id":id,"pwd":pwd},
+    			success:function(res){
+    				let result=res.trim();
+    				if(result=='NOID'){
+    					alert("아이디가 존재하지 않습니다\n다시 입력하세요");
+    					$('#log_id').val("");
+    					$('#log_pwd').val("");
+    					$('#log_id').focus();
+    				}else if(result=='NOPWD'){
+    					alert("비밀번호가 존재하지 않습니다\n다시 입력하세요");
+    					$('#log_pwd').val("");
+    					$('#log_pwd').focus();
+    				}else{
+    					//로그인 성공
+    					location.href="../main/main.do";
+    				}
+    			}
+    		})
+    	})
+    	$('#logoutBtn').click(function(){
+    		location.href="../member/logout.do";
+    	})
+    })
+    </script>
 </head>
 <body>
-    <!-- Normal Breadcrumb Begin -->
+     <!-- Normal Breadcrumb Begin -->
     <section class="normal-breadcrumb set-bg">
         <div class="container">
             <div class="row">
@@ -49,24 +93,24 @@
                 <div class="col-lg-6">
                     <div class="login__form">
                         <h3>Login</h3>
-                        <form action="#">
+                        <form action="../main/main.do">
                             <div class="input__item">
-                                <input type="text" placeholder="Email address">
+                                <input type="text" placeholder="ID" id="log_id">
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" placeholder="Password">
+                                <input type="password" placeholder="Password" id="log_pwd">
                                 <span class="icon_lock"></span>
                             </div>
-                            <button type="submit" class="site-btn">Login Now</button>
+                            <button type="submit" class="site-btn">로그인</button>
                         </form>
-                        <a href="#" class="forget_pass">Forgot Your Password?</a>
+                        <a href="#" class="forget_pass">ID/비밀번호 찾기</a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="login__register">
-                        <h3>Dont’t Have An Account?</h3>
-                        <a href="#" class="primary-btn">Register Now</a>
+                        <h3>계정이 없으십니까?</h3>
+                        <a href="join.do" class="primary-btn">회원가입</a>
                     </div>
                 </div>
             </div>
@@ -76,8 +120,7 @@
                         <div class="login__social__links">
                             <span>or</span>
                             <ul>
-                                <li><a href="#" class="facebook"><i class="fa fa-facebook"></i> Sign in With
-                                Facebook</a></li>
+                                <li><a href="#" class="facebook"><i class="fa fa-facebook"></i> Sign in With Facebook</a></li>
                                 <li><a href="#" class="google"><i class="fa fa-google"></i> Sign in With Google</a></li>
                                 <li><a href="#" class="twitter"><i class="fa fa-twitter"></i> Sign in With Twitter</a>
                                 </li>

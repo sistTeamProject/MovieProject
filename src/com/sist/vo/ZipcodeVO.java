@@ -42,13 +42,9 @@ public class ZipcodeVO {
 	public void setBunji(String bunji) {
 		this.bunji = bunji;
 	}
-
+	//��¿�
 	public String getAddress() {
-		return address;
+		return sido+" "+gugun+" "+dong+" "+bunji;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	
 }

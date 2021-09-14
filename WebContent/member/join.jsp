@@ -143,12 +143,13 @@ $(function(){
     <div class="row">
     <form method="post" action="../member/join_ok.do" id="joinFrm" name="joinFrm">
      <table class="table"  style="color: white">
+      <!--
        <tr>
          <th class="text-center" width=20%>프로필사진</th>
          <td width=30% height=80%>
            <input type=file value="사진업로드" id=profileBtn class="btn btn-sm">
          </td>
-       </tr>
+       </tr>-->
        <tr style="color: white">
          <th class="text-center" width=20%>ID</th>
          <td width=85% class="inline">
@@ -209,12 +210,12 @@ $(function(){
        </tr>
        <tr>
          <th class="text-center" width=20%>전화번호</th>
-         <td width=85% class="inline">
+         <td width=85% class="inline" style="color: black">
            <select name=tel1 class="input-sm">
             <option>010</option>
            </select>-
            <input type=text name=tel2 size=7 class="input-sm" id=tel2>-
-           <input type=text name=tel2 size=7 class="input-sm" id=tel3>
+           <input type=text name=tel3 size=7 class="input-sm" id=tel3>
          </td>
        </tr>
        <tr>

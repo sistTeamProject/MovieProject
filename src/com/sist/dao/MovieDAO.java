@@ -273,7 +273,7 @@ public class MovieDAO {
     			vo.setGrade(rs.getString(4));
     			vo.setActor(rs.getString(5));
     			vo.setDirector(rs.getString(6));
-    			vo.setReserve(rs.getString(7));
+    			vo.setReserve(rs.getDouble(7));
     			list.add(vo);
     		}
     		rs.close();
@@ -284,5 +284,5 @@ public class MovieDAO {
 		}
     	return list;
     }
-    
+
 }

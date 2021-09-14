@@ -18,25 +18,21 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function(){
-   $('#postBtn').click(function(){
-	    // ▼ dong 입력 확인 
+	$('#postBtn').click(function(){
 		let dong=$('#dong').val();
-		if(dong.trim()=="") // 공백문자 제거 (space문자)
-		{
+		if(dong.trim()==""){
 			$('#dong').focus();
 			return;
 		}
-		
-		// ▼ 요청처리, 응답처리
 		$.ajax({
 			type:'post',
-			url:'../member/postfind.do', // 요청 
+			url:'../member/postfind.do',
 			data:{"dong":dong},
 			success:function(res){
 				$('#print').html(res);
 			}
 		})
-   })
+	})
 })
 </script>
 </head>
@@ -46,8 +42,8 @@ $(function(){
       <table class="table">
        <tr>
          <td>
-         입력:<input type=text name=dong id=dong size=15 class="input-sm">
-         <input type=button value="검색" class="btn btn-sm btn-primary" id="postBtn">
+         입력:<input type="text" name="dong" id="dong" size=15 class="input-sm">
+         <input type="button" value="검색" class="btn btn-sm btn-primary" id="postBtn">
          </td>
        </tr>
        <tr>

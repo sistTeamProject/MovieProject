@@ -138,8 +138,8 @@ public class MemberDAO {
 	  	  try
 	  	  {
 	  		  getConnection();
-	  		  //id,pwd,name,sex,birthday, email,post,addr1,addr2,tel, admin,profile
-	  		  String sql="INSERT INTO movie_member VALUES(?,?,?,?,?,?,?,?,?,?,'n',?)"; // admin(n=일반회원,y=관리자)
+	  		  //id,pwd,name,sex,birthday, email,post,addr1,addr2,tel, admin
+	  		  String sql="INSERT INTO movie_member1 VALUES(?,?,?,?,?,?,?,?,?,?,'n')"; // admin(n=일반회원,y=관리자)
 	  		  ps=conn.prepareStatement(sql);
 	  		  ps.setString(1, vo.getId());
 	  		  ps.setString(2, vo.getPwd());
@@ -151,7 +151,6 @@ public class MemberDAO {
 	  		  ps.setString(8, vo.getAddr1());
 	  		  ps.setString(9, vo.getAddr2());
 	  		  ps.setString(10, vo.getTel());
-	  		  ps.setString(11, vo.getProfile());
 	  		  ps.executeUpdate();
 	  	  }catch(Exception ex)
 	  	  {
