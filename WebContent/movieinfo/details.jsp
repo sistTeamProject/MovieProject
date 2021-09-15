@@ -9,7 +9,10 @@
     <meta name="keywords" content="Anime, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Anime | Template</title>
+    
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -42,27 +45,37 @@ ul.menu{
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function(){
+	$("#detail_story").tabs(function(){
+		$("#tabs-1").show();
+		$("#tabs-2").hide();
+		$("#tabs-3").hide();
+	});
+})
+/*$(function(){
 	$('#detail_story').click(function(){
-		
-		//$('#printpage').load("detail_story.jsp");
-		let res = "";
-		$.ajax({
-			url:'../movieinfo/detail_story.jsp',
-			type:'post',
-			datatype:'xml',
-			error:function(){
-				alert("통신 실패");
-			},
-			success:function(res)
-			{
-				$('#printpage').html(res);
-				alert("통신 데이터 값 : " + res);
-			}
-		})
-		
+			
+	
+	let mno=$('#mno_number').attr("class");
+	
+	$.ajax({
+		type:'post',
+		url:'../movieinfo/detail_story.jsp', // 요청
+		data:{"mno":mno},
+		// 증권 , 좌석예매
+		success:function(res) // 응답 ===> 한 곳에서 요청/응답을 동시에 처리 (페이지 유지한 상태에서 데이터 읽기)
+		{
+			$('#printpage').html(res);
+			alert("통신 성공" + res);
+		},
+		error:function(error)
+		{
+			alert("통신 실패" + error);
+		}
 	})
 })
+})*/
 </script>
+
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
@@ -101,95 +114,40 @@ $(function(){
     <section class="anime-details spad">
         <div class="container">
             <div class="anime__details__content">
-                <div class="row" style="margin:70px;">
-                    <div class="col-lg-3">
-                    	<div>
-                    		<img src="${vo.poster}" width="300" height="300">
-                    	</div>
-                        <%-- <div class="anime__details__pic set-bg" data-setbg="${vo.poster }" style="width:300px;height:450px;">
-                            <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                            <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                        </div> --%>
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="anime__details__text">
-                            <div>
-                            	<h3>
-                                	<span style="font-size:40px;color:white;">${vo.title }</span>
-
-                                <span style="font-size:20px;color:white;background-color:red;border-radius:8px;vertical-align:middle">
-                                
-                                	<c:choose>
-                                        <c:when test="${vo.cno eq 1 }">상영 중</c:when>
-                                        <c:when test="${vo.cno eq 2 }">개봉 예정</c:when>
-                                        <c:when test="${vo.cno eq 3 }">상영 종료</c:when>
-                                    </c:choose>
-                                    
-                                
-                                </span>
-                                </h3>
-
-                                <h6 style="color:white">${vo.engtitle }</h6>
-               
-                            </div>
-                            <!-- <div class="anime__details__rating">
-                                <div class="rating">
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star-half-o"></i></a>
-                                </div>
-                                <span>1.029 Votes</span>
-                            </div> -->
-                            
-                            <div class="anime__details__widget" style="margin-top:20px">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-8">
-                                        <ul>
-                                            <li><span>개봉일</span> ${vo.regdate }</li> 
-                                            <li style="list-style-position:inside;"><span>장르</span> ${vo.genre }</li>
-                                            <li><span>국가</span> ${vo.nation }</li>
-                                            <li><span>등급</span> ${vo.grade }</li>
-                                            <li><span>러닝타임</span> ${vo.time }</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-6 col-md-4">
-                                        <ul>
-                                            <li><span>평점</span>${vo.score }</li>
-                                            <li><span>누적 관객</span>${vo.showUser }명</li>    
-                                        </ul>
-                                        <input type=button value="예매하기" class="btn btn-sm btn-danger" style="width:200px;height:50px;">
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- <div class="anime__details__btn">
-                                <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Follow</a>
-                                <a href="#" class="watch-btn"><span>Watch Now</span> <i
-                                    class="fa fa-angle-right"></i></a>
-                                </div>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
-
+                
+				<jsp:include page="detail_main.jsp"></jsp:include>
                 <div class="row">
                     <div class="col-lg-8 col-md-8">
-                        
+                                           
                         <nav>
+                        	<div id="tabs">
   							<ul class="menu">
-   								<li><input type=button id="detail_story" value="줄거리"></li>
-   								<li><input type=button id="detail_people" value="출연/제작"></li>
-    							<li><input type=button id="detail_video" value="예고편"></li>
+   								<li><a href="#tabs-1">줄거리</a><li>
+   								<li><a href="#tabs-2">출연/제작</a></li>
+   								
+    							<li></li>
   							</ul>
-  							
+  							<div id="tabs-1">
+						  		<jsp:include page="detail_story.jsp"></jsp:include>
+						  	</div>
+						    <div id="tabs-2">
+						  		<jsp:include page="detail_people.jsp"></jsp:include>
+						    </div>
+						    <div id="tabs-3">
+						    	<jsp:include page="detail_video.jsp"></jsp:include>
+						    </div>
+						</div>
+  							<!-- <li><input type=button id="detail_story" value="줄거리"><li>
+  							<li><input type=button id="detail_people" value="출연/제작"><li>
+  							<li><input type=button id="detail_video" value="예고편"><li> -->
 						</nav>
 						
-						<div class="printpage" id="printpage">
-                    		
-                  	  	</div>
+						<%-- <div class="printpage" id="printpage">
+                    		<jsp:include page="detail_story.jsp"></jsp:include>
+                  	  	</div> --%>
+
                     </div>
-                    
+                   
                     <div class="col-lg-4 col-md-4">
                         <div class="anime__details__sidebar">
                             <div class="section-title">

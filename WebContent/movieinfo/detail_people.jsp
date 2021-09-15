@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+		<div style="color:white;font-size:50px;">감독명 : ${vo.director}</div>
+		<div style="color:white;font-size:50px;">배우명 : ${vo.actor }</div>
 </body>
 </html>
