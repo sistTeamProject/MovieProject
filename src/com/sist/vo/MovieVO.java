@@ -20,14 +20,21 @@ CODE     NOT NULL VARCHAR2(20)
  */
 public class MovieVO {
 	private int mno,cno,showUser;
-	private double score;
-	private String title,grade,reserve,genre,time,regdate,director,actor,story,nation,key,engtitle,poster,code;
+	private double score,reserve;
+	private String title,grade,genre,time,regdate,director,actor,story,nation,key,engtitle,poster,code;
+	private String act1,dir1;
 	
-	public double getScore() {
-		return score;
+	public String getAct1() {
+		return act1;
 	}
-	public void setScore(double score) {
-		this.score = score;
+	public void setAct1(String act1) {
+		this.act1 = act1;
+	}
+	public String getDir1() {
+		return dir1;
+	}
+	public void setDir1(String dir1) {
+		this.dir1 = dir1;
 	}
 	public int getMno() {
 		return mno;
@@ -47,6 +54,18 @@ public class MovieVO {
 	public void setShowUser(int showUser) {
 		this.showUser = showUser;
 	}
+	public double getScore() {
+		return score;
+	}
+	public void setScore(double score) {
+		this.score = score;
+	}
+	public double getReserve() {
+		return reserve;
+	}
+	public void setReserve(double reserve) {
+		this.reserve = reserve;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -58,12 +77,6 @@ public class MovieVO {
 	}
 	public void setGrade(String grade) {
 		this.grade = grade;
-	}
-	public String getReserve() {
-		return reserve;
-	}
-	public void setReserve(String reserve) {
-		this.reserve = reserve;
 	}
 	public String getGenre() {
 		return genre;
@@ -131,7 +144,7 @@ public class MovieVO {
 	public void setCode(String code) {
 		this.code = code;
 	}
-	
+
 }
 
 

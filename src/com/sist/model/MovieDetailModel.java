@@ -21,17 +21,23 @@ public class MovieDetailModel {
 		  // request에 값을 담아준다 
 		  request.setAttribute("vo", vo);
 		  request.setAttribute("main_jsp", "../movieinfo/details.jsp");
-		  //return "../main/main.jsp";
-		  return "../movieinfo/details.jsp";
+		  return "../main/main.jsp";
+		  //return "../movieinfo/details.jsp";
 	  }
 	
-	@RequestMapping("movieinfo/detail_story.do")
+	@RequestMapping("movieinfo/details_story.do")
 	public String detail_story(HttpServletRequest request,HttpServletResponse response)
 	{
 		String mno=request.getParameter("mno");
 		MovieDAO dao=new MovieDAO();		
 		MovieVO vo=dao.movieDetailData(Integer.parseInt(mno));
-		request.setAttribute("vo", vo);
-		return "../movieinfo/detail_story.jsp";
+		String actor=vo.getActor();
+		vo.setAct1(actor);
+
+		return "redirect:../movieinfo/details.do?mno="+mno;
 	}
+	
+	
+	
+	
 }

@@ -50,7 +50,7 @@ public class MemberDAO {
 	  	  try
 	  	  {
 	  		  getConnection();
-	  		  String sql="SELECT COUNT(*) FROM movie_member "
+	  		  String sql="SELECT COUNT(*) FROM movie_member1 "
 	  				    +"WHERE id=?";
 	  		  ps=conn.prepareStatement(sql);
 	  		  ps.setString(1,id);
@@ -171,7 +171,7 @@ public class MemberDAO {
 	  	  {
 	  		  getConnection();
 	  		  String sql="SELECT COUNT(*) "
-	  				    +"FROM movie_member "
+	  				    +"FROM movie_member1 "
 	  				    +"WHERE id=?";
 	  		  ps=conn.prepareStatement(sql); //id가 존재하는지 체크
 	  		  ps.setString(1, id);
@@ -187,7 +187,7 @@ public class MemberDAO {
 	  		  }
 	  		  else // ID 있음
 	  		  {
-	  			  sql="SELECT pwd,name,admin FROM movie_member "
+	  			  sql="SELECT pwd,name,admin FROM movie_member1 "
 	  				 +"WHERE id=?";
 	  			  ps=conn.prepareStatement(sql);
 	  			  ps.setString(1, id);
