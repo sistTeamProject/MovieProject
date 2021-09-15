@@ -67,9 +67,6 @@
     		})
     		
     	})
-    	$('#logoutBtn').click(function(){
-    		location.href="../member/logout.do";
-    	})
     })
 </script>
 </head>
@@ -98,12 +95,12 @@
                         <h3>Login</h3>
                         
                             <div class="input__item">
-                                <input type="text" placeholder="ID" name="id" id="log_id">
                                 <span class="icon_mail"></span>
+                                <input type="text" placeholder="ID" name="id" id="log_id">
                             </div>
                             <div class="input__item">
-                                <input type="password" placeholder="Password" name="pwd" id="log_pwd">
                                 <span class="icon_lock"></span>
+                                <input type="password" placeholder="Password" name="pwd" id="log_pwd">
                             </div>
                             <button type="button" class="site-btn" id="logBtn">로그인</button>
                        

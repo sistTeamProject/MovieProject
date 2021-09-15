@@ -46,13 +46,10 @@ $(function(){
                                         <li><a href="#">리뷰 게시판</a></li>
                                 	</ul>
                                 </li>
-                                <li><a href="#">회원</a>
+                                <li><a href="#">마이페이지</a>
                                 	<ul class="dropdown">
-                                		<li><a href="../member/login.do">로그인</a></li>
-                                        <li><a href="../member/join.do">회원가입</a></li>
-                                        <li><a href="../member/mypage.do">마이페이지</a></li>
-                                       	<li><a href="../member/mypage_reserve.do">예매내역</a></li>
-                                       	<li><a href="../member/mypage_editinfo.do">회원정보수정</a></li>
+                                       	<li><a href="../mypage/reserved_list.do">예매내역</a></li>
+                                       	<li><a href="../mypage/edit_info.do">회원정보수정</a></li>
                                 	</ul>
                                 </li>
                             </ul>

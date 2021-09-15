@@ -134,9 +134,4 @@ public class MemberModel {
 		return "redirect:../main/main.do";
 	}
 	
-	@RequestMapping("member/mypage.do")
-	public String member_mypage(HttpServletRequest request, HttpServletResponse response) {
-		request.setAttribute("main_jsp", "../member/mypage.jsp");
-		return "../main/main.jsp";
-	}
 }
