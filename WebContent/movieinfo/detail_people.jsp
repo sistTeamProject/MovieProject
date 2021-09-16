@@ -7,7 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-		<div style="color:white;font-size:50px;">감독명 : ${vo.director}</div>
-		<div style="color:white;font-size:50px;">배우명 : ${vo.actor }</div>
+	<table class="table1">
+		<tr class="people" data-actor="${vo.actor }" data-director="${vo.director }">
+	      <td class="text-left" style="color:white;font-size:30px;">
+	        ${vo.actor }
+	      </td>
+	      <td class="text-left" style="color:white;font-size:30px;">
+	        ${vo.director }
+	      </td>
+	     </tr>
+    </table>
 </body>
 </html>

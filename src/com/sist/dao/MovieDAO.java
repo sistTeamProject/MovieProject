@@ -209,6 +209,33 @@ public class MovieDAO {
  	   }
  	   return vo;
     }
+    
+    public MovieVO DetailPeopleData(int mno)
+    {
+    	MovieVO vo=new MovieVO();
+    	try
+    	{
+    		getConnection();
+    		String sql="SELECT mno,actor,director FROM movie WHERE mno=?";
+    		ps=conn.prepareStatement(sql);
+    		ps.setInt(1, mno);
+    		ResultSet rs=ps.executeQuery();
+    		rs.next();
+    		vo.setMno(rs.getInt(1));
+    		vo.setActor(rs.getString(2));
+    		vo.setDirector(rs.getString(3));
+    		rs.close();
+    	}catch(Exception ex)
+    	{
+    		ex.printStackTrace();
+    	}
+    	finally
+    	{
+    		disConnection();
+    	}
+    	return vo;
+    	
+    }
     // 총페이지
     public int RelmovieTotalPage()
     {
@@ -256,6 +283,8 @@ public class MovieDAO {
  	   return total;
  	   
     }
+    
+    
     public List<MovieVO> searchMovieData(String fd,String type){
     	List<MovieVO> list=new ArrayList<MovieVO>();
     	try {

@@ -45,11 +45,34 @@ ul.menu{
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function(){
-	$("#detail_story").tabs(function(){
-		$("#tabs-1").show();
-		$("#tabs-2").hide();
-		$("#tabs-3").hide();
-	});
+	$('.detail1').hover(function(){
+		$(this).css('cursor','pointer');
+	},function(){
+		$(this).css('cursor','none');
+	})
+	
+	/* $("#detail_story").click(function(){
+		$.ajax({
+			async:'false',
+			let story=$(this).attr("data-name");
+			$('#printpage').text(story);
+		})
+	}) */
+	
+	$("#detail_people").click(function(){	
+		
+			$('#printpage').text(${vo.actor});
+	})
+	
+	/* $("#detail_video").click(function(){
+	
+		$.ajax({
+			async:'false',
+			let key=$(this).attr("key");
+			$('#printpage').text(key);
+		})
+	}) */
+		
 })
 /*$(function(){
 	$('#detail_story').click(function(){
@@ -120,31 +143,16 @@ $(function(){
                     <div class="col-lg-8 col-md-8">
                                            
                         <nav>
-                        	<div id="tabs">
-  							<ul class="menu">
-   								<li><a href="#tabs-1">줄거리</a><li>
-   								<li><a href="#tabs-2">출연/제작</a></li>
-   								
-    							<li></li>
-  							</ul>
-  							<div id="tabs-1">
-						  		<jsp:include page="detail_story.jsp"></jsp:include>
-						  	</div>
-						    <div id="tabs-2">
-						  		<jsp:include page="detail_people.jsp"></jsp:include>
-						    </div>
-						    <div id="tabs-3">
-						    	<jsp:include page="detail_video.jsp"></jsp:include>
-						    </div>
-						</div>
-  							<!-- <li><input type=button id="detail_story" value="줄거리"><li>
-  							<li><input type=button id="detail_people" value="출연/제작"><li>
-  							<li><input type=button id="detail_video" value="예고편"><li> -->
+						<ul>
+  							<li><input type=button class="detail1" id="detail_story" value="줄거리"><li>
+  							<li><input type=button class="detail1" id="detail_people" value="출연/제작"><li>
+  							<li><input type=button class="detail1" id="detail_video" value="예고편"><li>
+  						</ul> 
 						</nav>
 						
-						<%-- <div class="printpage" id="printpage">
-                    		<jsp:include page="detail_story.jsp"></jsp:include>
-                  	  	</div> --%>
+						 <div id="printpage">
+                    		
+                  	  	</div> 
 
                     </div>
                    

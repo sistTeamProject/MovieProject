@@ -25,16 +25,16 @@ public class MovieDetailModel {
 		  //return "../movieinfo/details.jsp";
 	  }
 	
-	@RequestMapping("movieinfo/detail_story.do")
+	@RequestMapping("movieinfo/detail_people.do")
 	public String detail_story(HttpServletRequest request,HttpServletResponse response)
 	{
 		String mno=request.getParameter("mno");
 		MovieDAO dao=new MovieDAO();		
-		MovieVO vo=dao.movieDetailData(Integer.parseInt(mno));
+		MovieVO vo=dao.DetailPeopleData(Integer.parseInt(mno));
 		
 		request.setAttribute("vo", vo);
 		
-		return "redirect:../movieinfo/detail_story.jsp";
+		return "../movieinfo/detail_story.jsp";
 	}
 	
 	
