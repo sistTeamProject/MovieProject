@@ -10,7 +10,7 @@
 </head>
 <body>
 
-		<div style="color:white;font-size:50px;">스토리 : ${vo.director}</div>
+		<div style="color:white;font-size:50px;">스토리 : ${vo.story}</div>
 
 		
 		

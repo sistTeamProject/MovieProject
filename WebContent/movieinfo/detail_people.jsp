@@ -8,7 +8,7 @@
 </head>
 <body>
 	<table class="table1">
-		<tr class="people" data-actor="${vo.actor }" data-director="${vo.director }">
+		<tr class="people">
 	      <td class="text-left" style="color:white;font-size:30px;">
 	        ${vo.actor }
 	      </td>

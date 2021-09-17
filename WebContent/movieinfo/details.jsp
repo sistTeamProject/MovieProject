@@ -51,27 +51,55 @@ $(function(){
 		$(this).css('cursor','none');
 	})
 	
-	/* $("#detail_story").click(function(){
-		$.ajax({
-			async:'false',
-			let story=$(this).attr("data-name");
-			$('#printpage').text(story);
-		})
-	}) */
-	
-	$("#detail_people").click(function(){	
+	$("#detail_story").click(function(){	
+		let mno1=$(this).attr("data-mno1");
 		
-			$('#printpage').text(${vo.actor});
+		$.ajax({
+			type:'post',
+			async:false,
+			url:'../movieinfo/detail_story.do',
+			data:{"mno":mno1},
+			success:function(result1)
+			{
+				$('#printpage').html(result1);
+			}
+		})
+		
 	})
 	
-	/* $("#detail_video").click(function(){
 	
+	$("#detail_people").click(function(){	
+		let mno2=$(this).attr("data-mno2");
+		
 		$.ajax({
-			async:'false',
-			let key=$(this).attr("key");
-			$('#printpage').text(key);
+			type:'post',
+			async:false,
+			url:'../movieinfo/detail_people.do',
+			data:{"mno":mno2},
+			success:function(result2)
+			{
+				$('#printpage').html(result2);
+			}
 		})
-	}) */
+		
+	})
+	
+	$("#detail_video").click(function(){	
+		let mno3=$(this).attr("data-mno3");
+		
+		$.ajax({
+			type:'post',
+			async:false,
+			url:'../movieinfo/detail_video.do',
+			data:{"mno":mno3},
+			success:function(result3)
+			{
+				$('#printpage').html(result3);
+			}
+		})
+		
+	})
+	
 		
 })
 /*$(function(){
@@ -142,13 +170,15 @@ $(function(){
                 <div class="row">
                     <div class="col-lg-8 col-md-8">
                                            
-                        <nav>
-						<ul>
-  							<li><input type=button class="detail1" id="detail_story" value="줄거리"><li>
-  							<li><input type=button class="detail1" id="detail_people" value="출연/제작"><li>
-  							<li><input type=button class="detail1" id="detail_video" value="예고편"><li>
-  						</ul> 
-						</nav>
+                        
+				<table>
+					<tr>
+						<th><span class="detail1" id="detail_story" data-mno1="${vo.mno}">줄거리</span><th>
+						<th><span class="detail1" id="detail_people" data-mno2="${vo.mno}">출연/제작</span><th>
+						<th><span class="detail1" id="detail_video" data-mno3="${vo.mno }">예고편</span><th>
+					</tr>
+			    </table>
+						
 						
 						 <div id="printpage">
                     		

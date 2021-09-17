@@ -25,18 +25,41 @@ public class MovieDetailModel {
 		  //return "../movieinfo/details.jsp";
 	  }
 	
-	@RequestMapping("movieinfo/detail_people.do")
+	@RequestMapping("movieinfo/detail_story.do")
 	public String detail_story(HttpServletRequest request,HttpServletResponse response)
 	{
 		String mno=request.getParameter("mno");
 		MovieDAO dao=new MovieDAO();		
-		MovieVO vo=dao.DetailPeopleData(Integer.parseInt(mno));
+		MovieVO vo=dao.movieDetailData(Integer.parseInt(mno));
 		
 		request.setAttribute("vo", vo);
 		
 		return "../movieinfo/detail_story.jsp";
 	}
 	
+	@RequestMapping("movieinfo/detail_people.do")
+	public String detail_people(HttpServletRequest request,HttpServletResponse response)
+	{
+		String mno=request.getParameter("mno");
+		MovieDAO dao=new MovieDAO();		
+		MovieVO vo=dao.movieDetailData(Integer.parseInt(mno));
+		
+		request.setAttribute("vo", vo);
+		
+		return "../movieinfo/detail_people.jsp";
+	}
+	
+	@RequestMapping("movieinfo/detail_video.do")
+	public String detail_video(HttpServletRequest request,HttpServletResponse response)
+	{
+		String mno=request.getParameter("mno");
+		MovieDAO dao=new MovieDAO();		
+		MovieVO vo=dao.movieDetailData(Integer.parseInt(mno));
+		
+		request.setAttribute("vo", vo);
+		
+		return "../movieinfo/detail_video.jsp";
+	}
 	
 	
 	
