@@ -7,15 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table class="table1">
-		<tr class="people">
-	      <td class="text-left" style="color:white;font-size:30px;">
-	        ${vo.actor }
+	<table class="table1">		
+		<tr>
+	      <td class="text-left" style="color:white;font-size:20px;">
+	        	감독 : ${vo.director }
 	      </td>
-	      <td class="text-left" style="color:white;font-size:30px;">
-	        ${vo.director }
+	    </tr>
+	    
+	    <tr class="people">
+	      <td class="text-left" style="color:white;font-size:20px;">
+	        	출연 : ${vo.actor }
 	      </td>
-	     </tr>
+		</tr>
     </table>
 </body>
 </html>

@@ -17,30 +17,25 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style type="text/css">
-nav {
+.tablepage {
   margin: 0 auto;
   background-color:transparent;
+  border-bottom:1px solid white;
+  margin-bottom:10px;
 }
-nav ul {
+.tablepage tr th {
   text-align: center;
-}
-nav ul li {
   display: inline-block;
   font-size: 30px;
-  text-color:white;
+  color:white;
   text-transform:uppercase;
-}
-nav ul li a {
   padding: 35px;
-  display: block;
+ 
 }
-nav ul li a:hover {
+.tablepage tr th:hover {
   color:orange;
 }
-ul.menu{
-	border:2px;
-	border-color:#1772a8;
-}
+
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
@@ -50,8 +45,12 @@ $(function(){
 	},function(){
 		$(this).css('cursor','none');
 	})
+	$(".w_btn li button").css({ background:"#fff2d8" , color:"#065471" });
 	
-	$("#detail_story").click(function(){	
+	$("#detail_story").click(function(){
+		$(this).css('color','coral');
+		$("#detail_people").css('color','white');
+		$("#detail_video").css('color','white');
 		let mno1=$(this).attr("data-mno1");
 		
 		$.ajax({
@@ -68,7 +67,10 @@ $(function(){
 	})
 	
 	
-	$("#detail_people").click(function(){	
+	$("#detail_people").click(function(){
+		$(this).css('color','coral');
+		$("#detail_story").css('color','white');
+		$("#detail_video").css('color','white');
 		let mno2=$(this).attr("data-mno2");
 		
 		$.ajax({
@@ -84,9 +86,11 @@ $(function(){
 		
 	})
 	
-	$("#detail_video").click(function(){	
+	$("#detail_video").click(function(){
+		$(this).css('color','coral');
+		$("#detail_story").css('color','white');
+		$("#detail_people").css('color','white');
 		let mno3=$(this).attr("data-mno3");
-		
 		$.ajax({
 			type:'post',
 			async:false,
@@ -102,29 +106,6 @@ $(function(){
 	
 		
 })
-/*$(function(){
-	$('#detail_story').click(function(){
-			
-	
-	let mno=$('#mno_number').attr("class");
-	
-	$.ajax({
-		type:'post',
-		url:'../movieinfo/detail_story.jsp', // 요청
-		data:{"mno":mno},
-		// 증권 , 좌석예매
-		success:function(res) // 응답 ===> 한 곳에서 요청/응답을 동시에 처리 (페이지 유지한 상태에서 데이터 읽기)
-		{
-			$('#printpage').html(res);
-			alert("통신 성공" + res);
-		},
-		error:function(error)
-		{
-			alert("통신 실패" + error);
-		}
-	})
-})
-})*/
 </script>
 
     <!-- Google Font -->
@@ -151,9 +132,14 @@ $(function(){
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
-                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                        <a href="./categories.html">Categories</a>
-                        <span>Romance</span>
+                        <a href="../main/main.do"><i class="fa fa-home"></i> Home</a>
+                        <c:choose>
+                          	<c:when test="${vo.cno eq '1'}"><a href="../movieinfo/relmovie.do">현재상영영화</a></c:when>
+                          	<c:when test="${vo.cno eq '2'}"><a href="../movieinfo/schmovie.do">개봉예정영화</a></c:when>
+                          	<c:when test="${vo.cno eq '3'}">상영종료영화</c:when>      
+                     	</c:choose>
+                        
+                        <span>${vo.title }</span>
                     </div>
                 </div>
             </div>
@@ -171,7 +157,7 @@ $(function(){
                     <div class="col-lg-8 col-md-8">
                                            
                         
-				<table>
+				<table class="tablepage">
 					<tr>
 						<th><span class="detail1" id="detail_story" data-mno1="${vo.mno}">줄거리</span><th>
 						<th><span class="detail1" id="detail_people" data-mno2="${vo.mno}">출연/제작</span><th>

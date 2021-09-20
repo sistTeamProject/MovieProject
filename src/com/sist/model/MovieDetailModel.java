@@ -61,6 +61,17 @@ public class MovieDetailModel {
 		return "../movieinfo/detail_video.jsp";
 	}
 	
-	
+	@RequestMapping("movieinfo/detail_recommand.do")
+	public String detail_recommand(HttpServletRequest request,HttpServletResponse response)
+	{
+		String mno=request.getParameter("mno");
+		String genre=request.getParameter("genre");
+		MovieDAO dao=new MovieDAO();
+		MovieVO vo=dao.movieDetailData(Integer.parseInt(mno));
+		
+		
+		request.setAttribute("vo",vo);
+		return "../movieinfo/detail_recommand.jsp";
+	}
 	
 }

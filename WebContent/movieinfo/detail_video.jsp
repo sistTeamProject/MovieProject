@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<table class="table">
+  		<tr>
+  			<td>
+  				<embed src="http://youtube.com/embed/${vo.key }" style="width:700px;height:350px">
+  			</td>
+  		</tr>
+  	</table>
 </body>
 </html>
