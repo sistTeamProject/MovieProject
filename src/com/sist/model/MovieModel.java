@@ -21,9 +21,20 @@ public class MovieModel {
 		MovieDAO dao=new MovieDAO();
 		List<MovieVO> list=dao.movieRealData(curpage);
 		int totalpage=dao.RelmovieTotalPage();
-		  
+		
+		final int BLOCK=5;
+		int startPage=((curpage-1)/BLOCK*BLOCK)+1;
+		int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
+		if(endPage>totalpage)
+			 endPage=totalpage;
+		   
 		request.setAttribute("curpage", curpage);//현재페이지
 		request.setAttribute("totalpage", totalpage);//총페이지
+		
+		request.setAttribute("BLOCK", BLOCK);
+		request.setAttribute("startPage", startPage);
+		request.setAttribute("endPage", endPage);
+		   
 		request.setAttribute("list", list);
 		request.setAttribute("main_jsp", "../movieinfo/relmovie.jsp");
 		return "../main/main.jsp";
@@ -39,9 +50,20 @@ public class MovieModel {
 		MovieDAO dao=new MovieDAO();
 		List<MovieVO> list=dao.movieSchData(curpage);
 		int totalpage=dao.SchmovieTotalPage();
-		  
+		
+		final int BLOCK=5;
+		int startPage=((curpage-1)/BLOCK*BLOCK)+1;
+		int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
+		if(endPage>totalpage)
+			 endPage=totalpage;
+		
 		request.setAttribute("curpage", curpage);//현재페이지
 		request.setAttribute("totalpage", totalpage);//총페이지
+		
+		request.setAttribute("BLOCK", BLOCK);
+		request.setAttribute("startPage", startPage);
+		request.setAttribute("endPage", endPage);
+		   
 		request.setAttribute("list", list);
 		request.setAttribute("main_jsp", "../movieinfo/schmovie.jsp");
 		return "../main/main.jsp";

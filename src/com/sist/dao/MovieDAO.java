@@ -197,7 +197,9 @@ public class MovieDAO {
  		   vo.setStory(rs.getString(13));
  		   vo.setActor(rs.getString(14));
  		   vo.setDirector(rs.getString(15));
- 		   vo.setKey(rs.getString(16));
+ 		   String key=rs.getString(16);
+ 		   key=key.substring(key.lastIndexOf("/"));
+ 		   vo.setKey(key);
  		   rs.close();
  	   }catch(Exception ex)
  	   {

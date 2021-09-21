@@ -22,7 +22,7 @@ public class MovieDetailModel {
 		  request.setAttribute("vo", vo);
 		  request.setAttribute("main_jsp", "../movieinfo/details.jsp");
 		  return "../main/main.jsp";
-		  //return "../movieinfo/details.jsp";
+		  //return "../movieinfo/detail_main.jsp";
 	  }
 	
 	@RequestMapping("movieinfo/detail_story.do")
