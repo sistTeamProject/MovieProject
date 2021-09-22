@@ -21,15 +21,17 @@ $(function(){
 		url:'../member/pwdcheck_result.do',
 		data:{"pwd":pwd},
 		success:function(res){
-			let result=res.trim();
-			}if(result=='NOPWD'){
+			let result=res.trim();			
+			if(result=='NOPWD'){
 				alert("비밀번호가 존재하지 않습니다\n다시 입력하세요");
 				$('#log_pwd').val("");
 				$('#log_pwd').focus();
-			}else{
+			}
+			else{
 				//로그인 성공
 				location.href="mypage/edit_info.do";
 			}
+		}
 	})
 
 })
