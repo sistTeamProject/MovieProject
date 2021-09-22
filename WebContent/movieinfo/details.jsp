@@ -45,7 +45,7 @@ $(function(){
 	},function(){
 		$(this).css('cursor','none');
 	})
-	$(".w_btn li button").css({ background:"#fff2d8" , color:"#065471" });
+
 	
 	$("#detail_story").click(function(){
 		$(this).css('color','coral');
@@ -103,6 +103,23 @@ $(function(){
 		})
 		
 	})
+	$("#detail_recommand").click(function(){
+		$(this).css('color','coral');
+		$("#detail_story").css('color','white');
+		$("#detail_people").css('color','white');
+		let mno4=$(this).attr("data-mno4");
+		$.ajax({
+			type:'post',
+			async:false,
+			url:'../movieinfo/detail_recommand.do',
+			data:{"genre":mno4},
+			success:function(result4)
+			{
+				$('#printpage').html(result4);
+			}
+		})
+		
+	})
 	
 		
 })
@@ -154,7 +171,7 @@ $(function(){
                 
 				<jsp:include page="detail_main.jsp"></jsp:include>
                 <div class="row">
-                    <div class="col-lg-8 col-md-8">
+                    <div class="col-lg-12 col-md-12">
                                            
                         
 				<table class="tablepage">
@@ -162,22 +179,25 @@ $(function(){
 						<th><span class="detail1" id="detail_story" data-mno1="${vo.mno}">줄거리</span><th>
 						<th><span class="detail1" id="detail_people" data-mno2="${vo.mno}">출연/제작</span><th>
 						<th><span class="detail1" id="detail_video" data-mno3="${vo.mno }">예고편</span><th>
+						<th><span class="detail1" id="detail_recommand" data-mno4="${vo.genre }">추천영화</span><th>
 					</tr>
 			    </table>
 						
 						
-						 <div id="printpage">
+						 <div id="printpage" style="text-align:center;margin-bottom:20px;">
                     		
                   	  	</div> 
 
                     </div>
                    
-                    <div class="col-lg-4 col-md-4">
-                        <div class="anime__details__sidebar">
+                    <%--<div class="col-lg-4 col-md-4">
+                    
+                    	
+                         <div class="anime__details__sidebar">
                             <div class="section-title">
                                 <h5>you might like...</h5>
                             </div>
-                            <div class="product__sidebar__view__item set-bg" data-setbg="../img/sidebar/tv-1.jpg">
+                            <div class="product__sidebar__view__item set-bg" data-setbg="${rvo.poster }">
                                 <div class="ep">18 / ?</div>
                                 <div class="view"><i class="fa fa-eye"></i> 9141</div>
                                 <h5><a href="#">Boruto: Naruto next generations</a></h5>
@@ -198,7 +218,7 @@ $(function(){
                                 <h5><a href="#">Fate/stay night: Heaven's Feel I. presage flower</a></h5>
                             </div>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
             </div>
            </div>

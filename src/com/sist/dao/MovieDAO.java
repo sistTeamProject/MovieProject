@@ -211,7 +211,6 @@ public class MovieDAO {
  	   }
  	   return vo;
     }
-    
     // 총페이지
     public int RelmovieTotalPage()
     {
@@ -256,8 +255,52 @@ public class MovieDAO {
  	   {
  		   disConnection();
  	   }
- 	   return total;
- 	   
+ 	   return total;	   
+    }
+    // 추천
+    public List<MovieVO> movieRecommandData(String genre)
+    {
+    	List<MovieVO> list=new ArrayList<MovieVO>();
+    	try
+    	{
+    		getConnection();
+    		String sql="SELECT mno,title,poster,genre,num "
+    				+"FROM (SELECT mno,title,poster,genre,rownum as num "
+    				+"FROM (SELECT mno,title,poster,genre "
+    				+"FROM movie ORDER BY score DESC)) "
+    				+"WHERE genre LIKE '%'||?||'%' AND rownum <=4";
+    		ps=conn.prepareStatement(sql);
+    		
+    		ps.setString(1, genre);
+    		
+    		ResultSet rs=ps.executeQuery();
+    		while(rs.next())
+    		{
+    			MovieVO vo=new MovieVO();
+    			vo.setMno(rs.getInt(1));
+    			vo.setTitle(rs.getString(2));
+    			vo.setPoster(rs.getString(3));    			
+    			String genre2=rs.getString(4);
+    			if(genre2.indexOf(",")!=-1)
+    			{
+    				genre2=genre2.trim().substring(0,genre2.indexOf(","));
+    				vo.setGenre(genre2);
+    			}
+    			else
+    			{
+    				vo.setGenre(genre2);	
+    			}
+    			list.add(vo);
+    		}
+    	}catch(Exception ex)
+    	{
+    		ex.printStackTrace();
+    	}
+    	finally
+    	{
+    		disConnection();
+    	}
+    	return list;
     }
     
     

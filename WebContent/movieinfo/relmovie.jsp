@@ -41,7 +41,7 @@
                                <%--  <div>
                     		<img src="${vo.poster}" width="270" height="400">
                     	</div> --%>
-                                   <<div class="product__item__pic set-bg" data-setbg="${vo.poster }" style="width:270px;height:400px;cursor:pointer" OnClick="location.href ='details.do?mno=${vo.mno }'">
+                                   <div class="product__item__pic set-bg" data-setbg="${vo.poster }" style="width:270px;height:400px;cursor:pointer" OnClick="location.href ='details.do?mno=${vo.mno }'">
                                         <!-- <div class="ep">18 / 18</div>
                                         <div class="comment"><i class="fa fa-comments"></i> 11</div>
                                         <div class="view"><i class="fa fa-eye"></i> 9141</div> -->

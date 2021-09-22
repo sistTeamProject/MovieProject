@@ -22,19 +22,13 @@ public class MovieVO {
 	private int mno,cno,showUser;
 	private double score,reserve;
 	private String title,grade,genre,time,regdate,director,actor,story,nation,key,engtitle,poster,code;
-	private String act1,dir1;
+	private String genre2;
 	
-	public String getAct1() {
-		return act1;
+	public String getGenre2() {
+		return genre2;
 	}
-	public void setAct1(String act1) {
-		this.act1 = act1;
-	}
-	public String getDir1() {
-		return dir1;
-	}
-	public void setDir1(String dir1) {
-		this.dir1 = dir1;
+	public void setGenre2(String genre2) {
+		this.genre2 = genre2;
 	}
 	public int getMno() {
 		return mno;

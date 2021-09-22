@@ -10,7 +10,7 @@
 <table class="table">
   		<tr>
   			<td>
-  				<iframe src='https://tv.naver.com/embed/${vo.key }?autoPlay=false' frameborder='no' scrolling='no' marginwidth='0' marginheight='0' WIDTH='544' HEIGHT='306' allow='autoplay' allowfullscreen></iframe>
+  				<iframe src='https://tv.naver.com/embed/${vo.key }?autoPlay=false' frameborder='no' scrolling='no' marginwidth='0' marginheight='0' WIDTH='744' HEIGHT='506' allow='autoplay' allowfullscreen></iframe>
   				<!--<embed src="https://tv.naver.com/embed/${vo.key }?autoPlay=false" style="width:700px;height:350px">-->
   			</td>
   		</tr>

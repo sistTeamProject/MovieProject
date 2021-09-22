@@ -15,9 +15,11 @@ public class MovieDetailModel {
 	  {
 		  // 영화번호 ==> DAO에 전송 ==> 처리후에 MovieVO를 넘겨준다 => JSP전송 (request.setAttribute())
 		  String mno=request.getParameter("mno");
+		  
 		  MovieDAO dao=new MovieDAO();
 		  // MovieVO 를 받는다 
 		  MovieVO vo=dao.movieDetailData(Integer.parseInt(mno));
+		  		  
 		  // request에 값을 담아준다 
 		  request.setAttribute("vo", vo);
 		  request.setAttribute("main_jsp", "../movieinfo/details.jsp");
@@ -67,11 +69,23 @@ public class MovieDetailModel {
 		String mno=request.getParameter("mno");
 		String genre=request.getParameter("genre");
 		MovieDAO dao=new MovieDAO();
-		MovieVO vo=dao.movieDetailData(Integer.parseInt(mno));
+		if(genre.indexOf(",")!=-1)
+		{
+			genre=genre.trim().substring(0,genre.indexOf(","));
+			List<MovieVO> rvo=dao.movieRecommandData(genre);
+			request.setAttribute("rvo",rvo);
+		}
+		else
+		{
+			List<MovieVO> rvo=dao.movieRecommandData(genre);
+			request.setAttribute("rvo",rvo);
+		}
 		
-		
-		request.setAttribute("vo",vo);
+		System.out.println("장르:"+genre);
+				
 		return "../movieinfo/detail_recommand.jsp";
+		//request.setAttribute("main_jsp", "../movieinfo/relmovie.jsp");
+		//return "../main/main.jsp";
 	}
 	
 }
