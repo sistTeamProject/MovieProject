@@ -14,11 +14,25 @@ public class MypageModel {
 		return "../main/main.jsp";
 	}
 	
+	
+	@RequestMapping("mypage/pwdcheck.do")
+	public String pwdcheck(HttpServletRequest request, HttpServletResponse response) {
+		request.setAttribute("main_jsp", "../mypage/pwdcheck.jsp");
+		return "../main/main.jsp";
+		
+	}
+	
+	@RequestMapping("mypage/pwdcheck_result.do")
+	public String pwdcheck_result(HttpServletRequest request, HttpServletResponse response) {
+		request.setAttribute("main_jsp", "../mypage/pwdcheck_result.jsp");
+		return "../main/main.jsp";
+		
+	}
+	
 	@RequestMapping("mypage/edit_info.do")
 	public String mypage_editInfo(HttpServletRequest request, HttpServletResponse response) {
 		request.setAttribute("main_jsp", "../mypage/edit_info.jsp");
 		return "../main/main.jsp";
 		
 	}
-	
 }

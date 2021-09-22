@@ -141,6 +141,7 @@ $(function(){
 <div class="wrapper row3">
   <main class="container clear">
     <div class="row">
+    <div class="col-lg-9" style="padding-left:50px">
     <form method="post" action="../member/join_ok.do" id="joinFrm" name="joinFrm">
      <table class="table"  style="color: white">
       <!--
@@ -161,7 +162,7 @@ $(function(){
          <th class="text-center" width=20%>비밀번호</th>
          <td width=85%>
            <input type=password name=pwd size=20 class="input-sm" id=pwd><br>
-           <input type=password name=pwd1 size=20 class="input-sm" placeholder="비밀번호 재입력" id=pwd1>
+           <input type=password name=pwd1 size=20 class="input-sm" placeholder="비밀번호 재입력" id=pwd1 style="margin-top:5px">
          </td>
        </tr>
        <tr>
@@ -210,7 +211,7 @@ $(function(){
        </tr>
        <tr>
          <th class="text-center" width=20%>전화번호</th>
-         <td width=85% class="inline" style="color: black">
+         <td width=85% class="inline"  style="color: black">
            <select name=tel1 class="input-sm">
             <option>010</option>
            </select>-
@@ -228,6 +229,7 @@ $(function(){
        </tr>
      </table>
      </form>
+    </div>
     </div>
   </main>
  </div>

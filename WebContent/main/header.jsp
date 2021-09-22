@@ -49,7 +49,7 @@ $(function(){
                                 <li><a href="#">마이페이지</a>
                                 	<ul class="dropdown">
                                        	<li><a href="../mypage/reserved_list.do">예매내역</a></li>
-                                       	<li><a href="../mypage/edit_info.do">회원정보수정</a></li>
+                                       	<li><a href="../mypage/pwdcheck.do">회원정보수정</a></li>
                                 	</ul>
                                 </li>
                             </ul>

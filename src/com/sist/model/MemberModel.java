@@ -121,6 +121,7 @@ public class MemberModel {
 				session.setAttribute("id", id);
 				session.setAttribute("admin", admin);
 				session.setAttribute("name", name);
+				session.setAttribute("pwd", pwd);
 				result="OK";
 			}
 			  request.setAttribute("result", result);
