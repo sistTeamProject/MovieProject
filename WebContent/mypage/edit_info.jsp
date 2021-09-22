@@ -45,6 +45,43 @@ $(function(){
 		}); 
 	});
 	
+	// ▼ 비밀번호 체크
+	$('#pwdcheck').click(function(){
+		// ▼ id입력 확인
+		let id=$("#id").val();
+		if(id.trim()=="")
+		{
+			$('#id').focus();
+			return;
+		}
+		
+		// ▼ 요청처리 , 응답처리 
+			$.ajax({
+			type:'POST',
+			url:'../member/pwdcheck.do',
+			data:{"id":id}, // 데이터 전송 idcheck.do?id=hong
+			success:function(res) //정상수행시에 => res는 실행된 모든 데이터를 읽어온다 
+			{
+				let count=res.trim();// 출력된 숫자를 받는다 (0,1)
+				if(count==0) //id가 없는 경우
+				{
+					$('#result').html('<span style="color:blue">사용 가능한 ID입니다</span>');
+					$('#ok').show(); // 확인 버튼 출력 
+				}
+				else //id가 있는 경우
+				{
+					$('#result').html('<span style="color:red">사용 중인 ID입니다</span>');
+				}
+			}
+		})
+	})
+	$('#okBtn').click(function(){
+		parent.joinFrm.id.value=$('#id').val();// 사용가능한 id를 회원가입창에 전송
+		parent.Shadowbox.close();// Shadowbox 닫기 
+	})
+		
+	})
+	
 	// ▼ 우편번호 찾기 
 	$('#postBtn').click(function(){
 		 Shadowbox.open({
@@ -58,6 +95,13 @@ $(function(){
 	
 	// ▼ 필수입력
 	$('#sendBtn').click(function(){
+		let pwdcheck=$('#pwdcheck').val();
+		if(pwdcheck.trim()==""){
+			alert('비밀번호를 확인해주세요');
+			$('#pwdcheck').focus();
+			return;
+		}
+		
 		let pwd=$('#pwd').val();
 		if(pwd.trim()=="")
 		{
@@ -115,7 +159,7 @@ $(function(){
 		}
 		
 		// 정상수행 
-		$('#joinFrm').submit();
+		$('#editInfo').submit();
 	})
 })
 </script>
@@ -142,7 +186,7 @@ $(function(){
   <main class="container clear">
     <div class="row">
     <div class="col-lg-9" style="padding-left:50px">
-    <form method="post" action="../member/join_ok.do" id="joinFrm" name="joinFrm">
+    <form method="post" action="../mypage/edit_info_ok.do" id="editInfo" name="editInfo">
      <table class="table"  style="color: white">
       <!--
        <tr>
@@ -156,16 +200,23 @@ $(function(){
          <td width=85% class="inline">${sessionScope.id }</td>
        </tr>
        <tr>
-         <th class="text-center" width=20%>비밀번호</th>
+         <th class="text-center" width=20%>기존 비밀번호</th>
+         <td width=85% class="inline">
+           <input type=password placeholder="기존 비밀번호 입력" name=pwd size=20 class="input-sm" id=pwdcheck >
+           <input type=button value="비밀번호 확인" class="btn btn-sm btn-primary" id="pwdcheckBtn">
+         </td>
+      </tr>
+      <tr>
+         <th class="text-center" width=20%>변경할 비밀번호</th>
          <td width=85%>
-           <input type=password placeholder="" name=pwd size=20 class="input-sm" id=pwd><br>
-           <input type=password name=pwd1 size=20 class="input-sm" placeholder="비밀번호 재입력" id=pwd1 style="margin-top:5px">
+           <input type=password placeholder="변경할 비밀번호 입력" name=pwd size=20 class="input-sm" id=pwd><br>
+           <input type=password name=pwd1 size=20 class="input-sm" placeholder="변경할 비밀번호 재입력" id=pwd1 style="margin-top:5px">
          </td>
        </tr>
        <tr>
          <th class="text-center" width=20%>이름</th>
          <td width=85% class="inline">
-           <input type=text name=name size=20 class="input-sm" id=name>
+           <input type=text name=name size=20 class="input-sm" id=name required value="${sessionScope.name }">
          </td>
        </tr>
        <tr>
@@ -178,13 +229,13 @@ $(function(){
        <tr>
          <th class="text-center" width=20%>생년월일</th>
          <td width=85%>
-           <input type="date" size=30 name=birthday id=birthday>
+           <input type="date" size=30 name=birthday id=birthday required value="${vo.birthday }">
          </td>
        </tr>
        <tr>
          <th class="text-center" width=20%>이메일</th>
          <td width=85%>
-           <input type=text name=email size=30 class="input-sm" id=email placeholder="예시) asd123@naver.com">
+           <input type=text name=email size=30 class="input-sm" id=email required value="${vo.email }">
          </td>
        </tr>
        <tr>
@@ -212,13 +263,13 @@ $(function(){
            <select name=tel1 class="input-sm">
             <option>010</option>
            </select>-
-           <input type=text name=tel2 size=7 class="input-sm" id=tel2>-
-           <input type=text name=tel3 size=7 class="input-sm" id=tel3>
+           <input type=text name=tel2 size=7 class="input-sm" id=tel2 required value="${vo.tel2 }">-
+           <input type=text name=tel3 size=7 class="input-sm" id=tel3 required value="${vo.tel3 }">
          </td>
        </tr>
        <tr>
          <td colspan="2" class="text-center inline">
-           <input type=button value="회원가입" class="btn btn-sm btn-info" id=sendBtn>
+           <input type=button value="수정" class="btn btn-sm btn-info" id=sendBtn>
            <input type=button value="취소" class="btn btn-sm btn-success" 
              onclick="javascript:history.back()"
            >

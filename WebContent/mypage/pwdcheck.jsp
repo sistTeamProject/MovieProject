@@ -14,7 +14,7 @@ $(function(){
 			$('#pwd_check').focus();
 			return;
 		}
-	})
+	
 	
 	$.ajax({
 		type:'post',
@@ -33,6 +33,8 @@ $(function(){
 			}
 		}
 	})
+	
+	})
 
 })
 	
@@ -47,10 +49,10 @@ $(function(){
                     <div class="normal__breadcrumb__text" >
                       <p>비밀번호 확인</p>
                      	<div class="input__item" style="padding:10px 0px 10px 0px">
-	                      <input type="password" placeholder="Password를 입력해주세요" id="pwd_check">
+	                      <input type="password" placeholder="password" id="pwd_check">
 	                    </div>
                       	<input type=button value="확인" class="btn btn-sm btn-danger" id=pwdcheckBtn>
-			          	<input type=button value="취소" class="btn btn-sm btn-dark" onclick="javascript:history.back()">
+			          	<a href="../main/main.do" class="btn btn-sm btn-dark">취소</a>
                 	</div>
             	</div>
         	</div>

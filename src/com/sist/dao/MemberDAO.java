@@ -219,10 +219,88 @@ public class MemberDAO {
 	  	  return result;
 	    }	    
 	    
-
-	    //5. 회원수정
-	    //6. 회원탈퇴
-	    //7. 아이디찾기, 비밀번호찾기
+	    //5. 회원정보 수정
+	    //5-1. 데이터 가져오기
+	    public MemberVO memberInfo(String id)
+	    {
+	    	MemberVO vo=new MemberVO();
+	  	  	try
+	  	  	{
+				getConnection();
+				//id,pwd,name,sex,birthday, email,post,addr1,addr2,tel, admin
+				String sql="SELECT id,pwd,name,sex,birthday,email,post,addr1,addr2,tel "
+				+ "FROM movie_member1 "
+				+ "WHERE id=?";
+				ps=conn.prepareStatement(sql);
+				ResultSet rs=ps.executeQuery();
+				rs.next();
+				vo.setId(rs.getString(1));
+				vo.setPwd(rs.getString(2));
+				vo.setName(rs.getString(3));
+				vo.setSex(rs.getString(4));
+				vo.setBirthday(rs.getString(5));
+				vo.setEmail(rs.getString(6));
+				vo.setPost(rs.getString(7));
+				vo.setAddr1(rs.getString(8));
+				vo.setAddr2(rs.getString(9));
+				vo.setTel(rs.getString(10));
+				rs.close();
+	  	  	}catch(Exception ex)
+	  	  	{
+	  	  		ex.printStackTrace();
+	  	  	}
+	  	  	finally
+	  	  	{
+	  	  		disConnection();
+	  	    }
+	  	  	return vo;
+	    }
+	    
+	    //5-2. 실제 수정
+	    public boolean memberInfoEdit(MemberVO vo) {
+	    	boolean bCheck=false;
+	    	try {
+	    		getConnection();
+	    		//1. 비밀번호 가져오기
+	    		String sql="SELECT pwd FROM movie_member1 "
+	    				+ "WHERE id=?";
+	    		ps=conn.prepareStatement(sql);
+	    		ps.setString(1, vo.getId());
+	    		ResultSet rs=ps.executeQuery();
+	    		rs.next();
+	    		String db_pwd=rs.getString(1);
+	    		rs.close();
+	    		//2. 비밀번호 일치 시 수정
+	    		if(db_pwd.equals(vo.getPwd()))// 수정가능
+	    		{
+	    			bCheck=true;
+	    			// 실제 수정을 한다 
+	    			sql="UPDATE movie_member1 SET "
+	    			   +"pwd=?,name=?,sex=?,birthday=?,email=?,post=?,addr1=?,addr2=?,tel=? "
+	    			   +"WHERE id=?";
+	    			ps=conn.prepareStatement(sql);
+	    			ps.setString(1, vo.getPwd());
+	    			ps.setString(2, vo.getName());
+	    			ps.setString(3, vo.getSex());
+	    			ps.setString(4, vo.getBirthday());
+	    			ps.setString(5, vo.getEmail());
+	    			ps.setString(6, vo.getPost());
+	    			ps.setString(7, vo.getAddr1());
+	    			ps.setString(8, vo.getAddr2());
+	    			ps.setString(9, vo.getTel());
+	    			ps.executeUpdate();
+	    		}
+	    		else
+	    		{
+	    			bCheck=false;
+	    		}
+	    	}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				disConnection();
+			}
+	    	return bCheck;
+	    }
 	    
 	    
 	    

@@ -22,7 +22,7 @@ $(function(){
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo">
-                        <a href="./index.html">
+                        <a href="../main/main.do">
                             <img src="../img/logo.png" alt="">
                         </a>
                     </div>
@@ -47,10 +47,12 @@ $(function(){
                                 	</ul>
                                 </li>
                                 <li><a href="#">마이페이지</a>
-                                	<ul class="dropdown">
-                                       	<li><a href="../mypage/reserved_list.do">예매내역</a></li>
-                                       	<li><a href="../mypage/pwdcheck.do">회원정보수정</a></li>
-                                	</ul>
+                                	<c:if test="${sessionScope.id!=null }">
+	                                	<ul class="dropdown">
+	                                       	<li><a href="../mypage/reserved_list.do">예매내역</a></li>
+	                                       	<li><a href="../mypage/edit_info.do">회원정보수정</a></li>
+	                                	</ul>
+                                	</c:if>
                                 </li>
                             </ul>
                         </nav>

@@ -13,6 +13,9 @@ import com.sist.vo.*;
 
 @Controller
 public class MemberModel {
+	/*======================================================================================
+									회원가입 페이지
+	========================================================================================*/
 	// 1. 회원가입 페이지
 	@RequestMapping("member/join.do")
 	public String member_join(HttpServletRequest request, HttpServletResponse response) {
@@ -96,7 +99,16 @@ public class MemberModel {
 		  return "redirect:../main/main.do";// main에서 회원가입 데이터가 필요가 없다 (request초기화)
 		  // sendRedirect() ==> DispatcherServlet => redirect:
 	  }
+
 	
+	
+	
+	
+	
+	/*======================================================================================
+										로그인 페이지
+	========================================================================================*/
+
 	@RequestMapping("member/login.do")
 	public String member_login(HttpServletRequest request,HttpServletResponse response) {
 		
@@ -121,7 +133,6 @@ public class MemberModel {
 				session.setAttribute("id", id);
 				session.setAttribute("admin", admin);
 				session.setAttribute("name", name);
-				session.setAttribute("pwd", pwd);
 				result="OK";
 			}
 			  request.setAttribute("result", result);
@@ -134,5 +145,58 @@ public class MemberModel {
 		session.invalidate();
 		return "redirect:../main/main.do";
 	}
+	
+	
+	
+	/*======================================================================================
+											마이페이지
+	========================================================================================*/
+	//1. 예매내역
+	@RequestMapping("mypage/reserved_list.do")
+	public String mypage_reservedList(HttpServletRequest request, HttpServletResponse response) {
+		request.setAttribute("main_jsp", "../mypage/reserved_list.jsp");
+		return "../main/main.jsp";
+	}
+	
+	
+	//2. 회원정보수정
+	@RequestMapping("mypage/edit_info.do")
+	public String mypage_editInfo(HttpServletRequest request, HttpServletResponse response) {
+		request.setAttribute("main_jsp", "../mypage/edit_info.jsp");
+		return "../main/main.jsp";
+		
+	}
+	
+	@RequestMapping("mypage/edit_info_ok.do")
+	public String mypage_editInfoOk(HttpServletRequest request, HttpServletResponse response) {
+		request.setAttribute("main_jsp", "../mypage/edit_info.jsp");
+		return "../main/main.jsp";
+		
+	}
+	
+	
+	@RequestMapping("mypage/pwdcheck.do")
+	public String pwdcheck(HttpServletRequest request, HttpServletResponse response) {
+		// 사용자가 보내준 PWD값 받기
+		String pwd=request.getParameter("pwdcheck");
+		
+		// 받은 pwd가 session에 저장된 pwd와 일치하는지 확인
+		
+		// 일치하면 
+		// 일치하지 않으면
+		 
+		 
+		request.setAttribute("main_jsp", "../mypage/pwdcheck.jsp");
+		return "../main/main.jsp";
+		
+	}
+	
+	@RequestMapping("mypage/pwdcheck_result.do")
+	public String pwdcheck_result(HttpServletRequest request, HttpServletResponse response) {
+		request.setAttribute("main_jsp", "../mypage/pwdcheck_result.jsp");
+		return "../main/main.jsp";
+		
+	}
+	
 	
 }
