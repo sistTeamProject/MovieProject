@@ -22,7 +22,7 @@ $(function(){
 		data:{"pwd":pwd},
 		success:function(res){
 			let result=res.trim();
-			}else if(result=='NOPWD'){
+			}if(result=='NOPWD'){
 				alert("비밀번호가 존재하지 않습니다\n다시 입력하세요");
 				$('#log_pwd').val("");
 				$('#log_pwd').focus();
