@@ -32,7 +32,7 @@ $(function(){
                         <nav class="header__menu mobile-menu">
                             <ul>
                                 <li class="active"><a href="../main/main.do">Homepage</a></li>
-                                <li><a href="#">예매</a></li>
+                                <li><a href="../reserve/reserve.do">예매</a></li>
                                 <li><a href="#">영화</a>
                                     <ul class="dropdown">
                                         <li><a href="../movieinfo/relmovie.do">현재 상영 영화</a></li>
