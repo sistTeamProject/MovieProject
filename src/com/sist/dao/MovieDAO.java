@@ -48,7 +48,7 @@ public class MovieDAO {
 					+"FROM (SELECT mno,title,poster,genre,grade,cno,score,reserve "
 					+"FROM movie ORDER BY TO_NUMBER(reserve) DESC)) "
 					+"WHERE rownum <= 20";
-			ps=conn.prepareStatement(sql);
+			ps=conn.prepareStatement(sql); 
 			ResultSet rs=ps.executeQuery();
 			while(rs.next()) {
 				MovieVO vo=new MovieVO();
