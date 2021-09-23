@@ -44,7 +44,7 @@
                                     </div>
                                     <div class="product__item__text">
                                         <ul>
-                                            <li>${vo.genre }</li>
+                                            <li>${vo.genre }</li> 
                                         </ul>
                                         <h5><a href="#">${vo.title }</a></h5>
                                     </div>
