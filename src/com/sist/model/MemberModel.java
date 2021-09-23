@@ -162,6 +162,22 @@ public class MemberModel {
 	//2. 회원정보수정
 	@RequestMapping("mypage/edit_info.do")
 	public String mypage_editInfo(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
+		
+		MemberDAO dao=MemberDAO.newInstance();
+		MemberVO vo=dao.memberInfo(id);
+		String post1=vo.getPost().substring(0,3);
+		String post2=vo.getPost().substring(4);
+		String tel=vo.getTel();
+		String tel2=tel.substring(4,tel.lastIndexOf("-"));
+		String tel3=tel.substring(tel.lastIndexOf("-")+1);
+		
+		request.setAttribute("vo", vo);
+		request.setAttribute("post1", post1);
+		request.setAttribute("post2", post2);
+		request.setAttribute("tel2", tel2);
+		request.setAttribute("tel3", tel3);
 		request.setAttribute("main_jsp", "../mypage/edit_info.jsp");
 		return "../main/main.jsp";
 		
@@ -169,24 +185,35 @@ public class MemberModel {
 	
 	@RequestMapping("mypage/edit_info_ok.do")
 	public String mypage_editInfoOk(HttpServletRequest request, HttpServletResponse response) {
-		request.setAttribute("main_jsp", "../mypage/edit_info.jsp");
-		return "../main/main.jsp";
+		try {
+			request.setCharacterEncoding("UTF-8");
+		}catch (Exception e) {}
+		HttpSession session=request.getSession();
+		MemberVO vo=new MemberVO();
+		vo.setId((String)session.getAttribute("id"));
+		String pwd=request.getParameter("pwd");
+		if(pwd!="") {
+			vo.setPwd(pwd);
+		}
+		vo.setName(request.getParameter("name"));
+		vo.setSex(request.getParameter("sex"));
+		vo.setBirthday(request.getParameter("birthday"));
+		vo.setEmail(request.getParameter("email"));
+		String post=request.getParameter("post1")+"-"+request.getParameter("post2");
+		vo.setPost(post);
+		vo.setAddr1(request.getParameter("addr1"));
+		vo.setAddr2(request.getParameter("addr2"));
+		String tel=request.getParameter("tel1")+"-"+request.getParameter("tel2")+"-"+request.getParameter("tel3");
+		vo.setTel(tel);
 		
+		MemberDAO dao=MemberDAO.newInstance();
+		dao.memberInfoEdit(vo);
+		return "redirect:../mypage/edit_info.do";
 	}
 	
 	
 	@RequestMapping("mypage/pwdcheck.do")
 	public String pwdcheck(HttpServletRequest request, HttpServletResponse response) {
-		/*
-		// 사용자가 보내준 PWD값 받기
-		String pwd=request.getParameter("pwdcheck");
-		
-		// 받은 pwd가 session에 저장된 pwd와 일치하는지 확인
-		
-		// 일치하면 
-		// 일치하지 않으면
-		 
-		 */
 		request.setAttribute("main_jsp", "../mypage/pwdcheck.jsp");
 		return "../main/main.jsp";
 		
@@ -194,6 +221,18 @@ public class MemberModel {
 	
 	@RequestMapping("mypage/pwdcheck_result.do")
 	public String pwdcheck_result(HttpServletRequest request, HttpServletResponse response) {
+		// 세션 아이디 받기
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
+		
+		// 사용자가 보내준 PWD값 받기
+		String pwd=request.getParameter("pwd");
+		
+		// 받은 pwd가 session에 저장된 pwd와 일치하는지 확인
+		MemberDAO dao=MemberDAO.newInstance();
+		boolean bCheck=dao.memberPwdCheck(id, pwd);
+		 
+		request.setAttribute("bCheck", bCheck);
 		request.setAttribute("main_jsp", "../mypage/pwdcheck_result.jsp");
 		return "../main/main.jsp";
 		

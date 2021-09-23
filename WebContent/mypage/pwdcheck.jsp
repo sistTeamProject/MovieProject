@@ -38,7 +38,7 @@ $(function(){
 })
 ==============================================================================*/
 //▼ 임시 코딩
-$(function(){
+/* $(function(){
 	$('#pwdcheckBtn').click(function(){
 		let pwd=$('#pwd_check').val();
 		if(pwd.trim()==""){
@@ -47,7 +47,14 @@ $(function(){
 			return;
 		}
 	})
-})
+}) */
+function check(){
+	let pwd=$('#pwd_check').val()
+	if(pwd.trim()==""){
+		$('#pwd_check').focus()
+		return false;
+	}else return true
+};
 </script>
 </head>
 <body>
@@ -58,13 +65,15 @@ $(function(){
                 <div class="col-lg-12 text-center">
                     <div class="normal__breadcrumb__text" >
                       <p>비밀번호 확인</p>
-                     	<div class="input__item" style="padding:10px 0px 10px 0px">
-	                      <input type="password" placeholder="password" id="pwd_check">
-	                    </div>
-                      	<!-- <input type=button value="확인" class="btn btn-sm btn-danger" id=pwdcheckBtn> 
-                      	▼ 임시 코딩 																		-->
+                      	<form onsubmit="return check()" method="post" action="../mypage/pwdcheck_result.do">
+	                     	<div class="input__item" style="padding:10px 0px 10px 0px">
+		                      <input type="password" placeholder="password" id="pwd_check" name=pwd>
+		                    </div>
+	                      	<input type=submit value="확인" class="btn btn-sm btn-danger" id=pwdcheckBtn>
+                      	</form> 
+                      	<!-- ▼ 임시 코딩 																		
 	                    <a href="../mypage/edit_info.do" class="btn btn-sm btn-dark" id=pwdcheckBtn>확인</a>
-			          	<a href="../main/main.do" class="btn btn-sm btn-dark">취소</a>
+			          	<a href="../main/main.do" class="btn btn-sm btn-dark">취소</a> -->
                 	</div>
             	</div>
         	</div>

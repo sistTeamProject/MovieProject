@@ -220,7 +220,31 @@ public class MemberDAO {
 	    }	    
 	    
 	    //5. 회원정보 수정
-	    //5-1. 데이터 가져오기
+	    //5-1. 비밀번호 체크
+	    public boolean memberPwdCheck(String id,String pwd) {
+	    	boolean bCheck=false;
+	    	try {
+	    		getConnection();
+	    		String sql="SELECT pwd FROM movie_member1 "
+	    				+ "WHERE id=?";
+	    		ps=conn.prepareStatement(sql);
+	    		ps.setString(1, id);
+	    		ResultSet rs=ps.executeQuery();
+	    		rs.next();
+	    		String db_pwd=rs.getString(1);
+	    		rs.close();
+	    		
+	    		if(db_pwd.equals(pwd)) {
+	    			bCheck=true;
+	    		}
+	    	}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				disConnection();
+			}
+	    	return bCheck;
+	    }
+	    //5-2. 데이터 가져오기
 	    public MemberVO memberInfo(String id)
 	    {
 	    	MemberVO vo=new MemberVO();
@@ -232,6 +256,7 @@ public class MemberDAO {
 				+ "FROM movie_member1 "
 				+ "WHERE id=?";
 				ps=conn.prepareStatement(sql);
+				ps.setString(1, id);
 				ResultSet rs=ps.executeQuery();
 				rs.next();
 				vo.setId(rs.getString(1));
@@ -256,12 +281,10 @@ public class MemberDAO {
 	  	  	return vo;
 	    }
 	    
-	    //5-2. 실제 수정
-	    public boolean memberInfoEdit(MemberVO vo) {
-	    	boolean bCheck=false;
+	    //5-3. 실제 수정
+	    public void memberInfoEdit(MemberVO vo) {
 	    	try {
 	    		getConnection();
-	    		//1. 비밀번호 가져오기
 	    		String sql="SELECT pwd FROM movie_member1 "
 	    				+ "WHERE id=?";
 	    		ps=conn.prepareStatement(sql);
@@ -270,37 +293,33 @@ public class MemberDAO {
 	    		rs.next();
 	    		String db_pwd=rs.getString(1);
 	    		rs.close();
-	    		//2. 비밀번호 일치 시 수정
-	    		if(db_pwd.equals(vo.getPwd()))// 수정가능
-	    		{
-	    			bCheck=true;
-	    			// 실제 수정을 한다 
-	    			sql="UPDATE movie_member1 SET "
-	    			   +"pwd=?,name=?,sex=?,birthday=?,email=?,post=?,addr1=?,addr2=?,tel=? "
-	    			   +"WHERE id=?";
-	    			ps=conn.prepareStatement(sql);
-	    			ps.setString(1, vo.getPwd());
-	    			ps.setString(2, vo.getName());
-	    			ps.setString(3, vo.getSex());
-	    			ps.setString(4, vo.getBirthday());
-	    			ps.setString(5, vo.getEmail());
-	    			ps.setString(6, vo.getPost());
-	    			ps.setString(7, vo.getAddr1());
-	    			ps.setString(8, vo.getAddr2());
-	    			ps.setString(9, vo.getTel());
-	    			ps.executeUpdate();
-	    		}
+	    		
+	    		sql="UPDATE movie_member1 "
+	    					+ "SET pwd=?, name=?, sex=?, birthday=?, "
+	    					+ "email=?, post=?, addr1=?, addr2=?, tel=? "
+	    					+ "WHERE id=?";
+	    		ps=conn.prepareStatement(sql);
+	    		if(vo.getPwd()!="")
+	    			ps.setString(1, db_pwd);
 	    		else
-	    		{
-	    			bCheck=false;
-	    		}
+	    			ps.setString(1, vo.getPwd());
+	    		ps.setString(2, vo.getName());
+	    		ps.setString(3, vo.getSex());
+	    		ps.setString(4, vo.getBirthday());
+	    		ps.setString(5, vo.getEmail());
+	    		ps.setString(6, vo.getPost());
+	    		ps.setString(7, vo.getAddr1());
+	    		ps.setString(8, vo.getAddr2());
+	    		ps.setString(9, vo.getTel());
+	    		ps.setString(10, vo.getId());
+	    		ps.executeUpdate();
 	    	}catch (Exception e) {
 				e.printStackTrace();
 			}finally {
 				disConnection();
 			}
-	    	return bCheck;
 	    }
+
 	    
 	    
 	    
