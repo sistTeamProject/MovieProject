@@ -177,6 +177,7 @@ public class MemberModel {
 	
 	@RequestMapping("mypage/pwdcheck.do")
 	public String pwdcheck(HttpServletRequest request, HttpServletResponse response) {
+		/*
 		// 사용자가 보내준 PWD값 받기
 		String pwd=request.getParameter("pwdcheck");
 		
@@ -185,7 +186,7 @@ public class MemberModel {
 		// 일치하면 
 		// 일치하지 않으면
 		 
-		 
+		 */
 		request.setAttribute("main_jsp", "../mypage/pwdcheck.jsp");
 		return "../main/main.jsp";
 		

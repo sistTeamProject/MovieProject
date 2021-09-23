@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
+/*  ================================================================================   ㅠ_____ㅠ
 $(function(){
 	$('#pwdcheckBtn').click(function(){
 		let pwd=$('#pwd_check').val();
@@ -14,7 +15,6 @@ $(function(){
 			$('#pwd_check').focus();
 			return;
 		}
-	
 	
 	$.ajax({
 		type:'post',
@@ -33,11 +33,21 @@ $(function(){
 			}
 		}
 	})
-	
 	})
 
 })
-	
+==============================================================================*/
+//▼ 임시 코딩
+$(function(){
+	$('#pwdcheckBtn').click(function(){
+		let pwd=$('#pwd_check').val();
+		if(pwd.trim()==""){
+			alert('비밀번호를 입력하세요');
+			$('#pwd_check').focus();
+			return;
+		}
+	})
+})
 </script>
 </head>
 <body>
@@ -51,7 +61,9 @@ $(function(){
                      	<div class="input__item" style="padding:10px 0px 10px 0px">
 	                      <input type="password" placeholder="password" id="pwd_check">
 	                    </div>
-                      	<input type=button value="확인" class="btn btn-sm btn-danger" id=pwdcheckBtn>
+                      	<!-- <input type=button value="확인" class="btn btn-sm btn-danger" id=pwdcheckBtn> 
+                      	▼ 임시 코딩 																		-->
+	                    <a href="../mypage/edit_info.do" class="btn btn-sm btn-dark" id=pwdcheckBtn>확인</a>
 			          	<a href="../main/main.do" class="btn btn-sm btn-dark">취소</a>
                 	</div>
             	</div>

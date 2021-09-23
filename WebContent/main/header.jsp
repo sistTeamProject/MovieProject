@@ -50,7 +50,7 @@ $(function(){
                                 	<c:if test="${sessionScope.id!=null }">
 	                                	<ul class="dropdown">
 	                                       	<li><a href="../mypage/reserved_list.do">예매내역</a></li>
-	                                       	<li><a href="../mypage/edit_info.do">회원정보수정</a></li>
+	                                       	<li><a href="../mypage/pwdcheck.do">회원정보수정</a></li>
 	                                	</ul>
                                 	</c:if>
                                 </li>
