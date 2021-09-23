@@ -41,7 +41,7 @@
                                <%--  <div>
                     		<img src="${vo.poster}" width="270" height="400">
                     	</div> --%>
-                                   <<div class="product__item__pic set-bg" data-setbg="${vo.poster }" style="width:270px;height:400px;cursor:pointer" OnClick="location.href ='details.do?mno=${vo.mno }'">
+                                   <div class="product__item__pic set-bg" data-setbg="${vo.poster }" style="width:270px;height:400px;cursor:pointer" OnClick="location.href ='details.do?mno=${vo.mno }'">
                                         <!-- <div class="ep">18 / 18</div>
                                         <div class="comment"><i class="fa fa-comments"></i> 11</div>
                                         <div class="view"><i class="fa fa-eye"></i> 9141</div> -->
@@ -75,7 +75,23 @@
                         </div>
                     </div>
                     <div class="product__pagination inline" align="center">
-                    	<c:forEach var="i" begin="1" end="${totalpage }">
+                    
+                    <c:if test="${startPage>1 }">
+            			<a href="../movieinfo/relmovie.do?page=${startPage-1 }">&laquo; 이전</a>
+         			</c:if>
+          			<c:forEach var="i" begin="${startPage }" end="${endPage }">
+            			<c:if test="${curpage==i }">
+              				<a href="../movieinfo/relmovie.do?page=${i }" class="current-page">${i}</a>
+            			</c:if>
+            			<c:if test="${curpage!=i }">
+              				<a href="../movieinfo/relmovie.do?page=${i }">${i}</a>
+            			</c:if>
+          			</c:forEach>
+          			<c:if test="${endPage<totalpage }">
+            			<a href="../movieinfo/relmovie.do?page=${endPage+1 }">다음 &raquo;</a>
+          			</c:if>
+                    
+                    <%--<c:forEach var="i" begin="1" end="${totalpage }">
                     	
                         	<c:if test="${curpage==i }">
                         		<a href="../movieinfo/relmovie.do?page=${i }" class="current-page">${i}</a>
@@ -85,6 +101,7 @@
                         	</c:if>
                         
                         </c:forEach>
+                    --%>
                         <!-- <a href="#" class="current-page">1</a> -->
                         <!-- <a href="#"><i class="fa fa-angle-double-right"></i></a> -->
                     </div> 

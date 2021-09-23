@@ -22,7 +22,7 @@ $(function(){
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo">
-                        <a href="./index.html">
+                        <a href="../main/main.do">
                             <img src="../img/logo.png" alt="">
                         </a>
                     </div>
@@ -32,7 +32,7 @@ $(function(){
                         <nav class="header__menu mobile-menu">
                             <ul>
                                 <li class="active"><a href="../main/main.do">Homepage</a></li>
-                                <li><a href="#">예매</a></li>
+                                <li><a href="../reserve/reserve.do">예매</a></li>
                                 <li><a href="#">영화</a>
                                     <ul class="dropdown">
                                         <li><a href="../movieinfo/relmovie.do">현재 상영 영화</a></li>
@@ -46,14 +46,13 @@ $(function(){
                                         <li><a href="#">리뷰 게시판</a></li>
                                 	</ul>
                                 </li>
-                                <li><a href="#">회원</a>
-                                	<ul class="dropdown">
-                                		<li><a href="../member/login.do">로그인</a></li>
-                                        <li><a href="../member/join.do">회원가입</a></li>
-                                        <li><a href="../member/mypage.do">마이페이지</a></li>
-                                       	<li><a href="../member/mypage_reserve.do">예매내역</a></li>
-                                       	<li><a href="../member/mypage_editinfo.do">회원정보수정</a></li>
-                                	</ul>
+                                <li><a href="#">마이페이지</a>
+                                	<c:if test="${sessionScope.id!=null }">
+	                                	<ul class="dropdown">
+	                                       	<li><a href="../mypage/reserved_list.do">예매내역</a></li>
+	                                       	<li><a href="../mypage/edit_info.do">회원정보수정</a></li>
+	                                	</ul>
+                                	</c:if>
                                 </li>
                             </ul>
                         </nav>
