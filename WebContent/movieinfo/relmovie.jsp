@@ -51,10 +51,10 @@
                                     	<tr>
                                     	<th>
                                     	<c:choose>
-                                        	<c:when test="${vo.grade eq ' 전체 관람가'}"><span style="border-radius:50%;background-color:green;font-size:15px;color:white">전체</span></c:when>
-                                        	<c:when test="${vo.grade eq ' 12세 관람가'}"><span style="border-radius:50%;background-color:deepskyblue;font-size:15px;color:white">12</span></c:when>
-                                        	<c:when test="${vo.grade eq ' 15세 관람가'}"><span style="border-radius:50%;background-color:orange;font-size:15px;color:white;">15</span></c:when>
-                                        	<c:when test="${vo.grade eq ' 청소년 관람불가'}"><span style="border-radius:50%;background-color:red;font-size:15px;color:white">청불</span></c:when>
+                                        	<c:when test="${vo.grade eq ' 전체 관람가'}"><span style="border-radius:50%;background-color:green;font-size:15px;color:white;white-space:nowrap;">전체</span></c:when>
+                                        	<c:when test="${vo.grade eq ' 12세 관람가'}"><span style="border-radius:50%;background-color:deepskyblue;font-size:15px;color:white;white-space:nowrap;">12</span></c:when>
+                                        	<c:when test="${vo.grade eq ' 15세 관람가'}"><span style="border-radius:50%;background-color:orange;font-size:15px;color:white;white-space:nowrap;">15</span></c:when>
+                                        	<c:when test="${vo.grade eq ' 청소년 관람불가'}"><span style="border-radius:50%;background-color:red;font-size:15px;color:white;white-space:nowrap;">청불</span></c:when>
                                   		</c:choose>
                                   		</th>
                                   		<th>
