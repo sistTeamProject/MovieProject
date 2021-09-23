@@ -368,4 +368,72 @@ public class MovieDAO {
 		}
     	return list;
     }
+    //메인페이지 - 중간단
+    public List<MovieVO> homeMovieList(int cno,String order){
+    	List<MovieVO> list=new ArrayList<MovieVO>();
+    	try {
+    		getConnection();
+    		String sql="SELECT mno,poster,title,genre,showuser,director,reserve,num "
+    				+ "FROM (SELECT mno,poster,title,genre,showuser,director,reserve,rownum as num "
+    				+ "FROM (SELECT mno,poster,title,genre,showuser,director,reserve "
+    				+ "FROM movie WHERE cno=? ORDER BY "+order+")) WHERE num <= 6";
+    		ps=conn.prepareStatement(sql);
+    		ps.setInt(1, cno);
+    		ResultSet rs=ps.executeQuery();
+    		while(rs.next()) {
+    			MovieVO vo=new MovieVO();
+    			vo.setMno(rs.getInt(1));
+    			vo.setPoster(rs.getString(2));
+    			vo.setTitle(rs.getString(3));
+    			vo.setGenre(rs.getString(4));
+    			vo.setShowUser(rs.getInt(5));
+    			vo.setDirector(rs.getString(6));
+    			vo.setReserve(rs.getDouble(7));
+    			list.add(vo);
+    		}
+    		rs.close();
+    	}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			disConnection();
+		}
+    	return list;
+    }
+    //메인페이지 - 최근 리뷰 작성 영화
+    public List<MovieVO> homeRecentReviewList(){
+    	List<MovieVO> list=new ArrayList<MovieVO>();
+    	try {
+    		getConnection();
+    		String sql="SELECT DISTINCT mno FROM(SELECT mno FROM movie_review ORDER BY regdate DESC)";
+    		ps=conn.prepareStatement(sql);
+    		ResultSet rs=ps.executeQuery();
+    		int[] mnos=new int[6];
+    		for(int i=0;i<mnos.length;i++) {
+	    		rs.next();	
+	    		mnos[i]=rs.getInt(1);
+    		}
+    		rs.close();
+    		
+    		for(int i=0;i<mnos.length;i++) {
+	    		sql="SELECT mno,poster,title,showuser FROM movie where mno=?";
+	    		ps=conn.prepareStatement(sql);
+	    		ps.setInt(1, mnos[i]);
+	    		rs=ps.executeQuery();
+	    		while(rs.next()) {
+	    			MovieVO vo=new MovieVO();
+	    			vo.setMno(rs.getInt(1));
+	    			vo.setPoster(rs.getString(2));
+	    			vo.setTitle(rs.getString(3));
+	    			vo.setShowUser(rs.getInt(4));
+	    			list.add(vo);
+	    		}
+	    		rs.close();
+    		}
+    	}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			disConnection();
+		}
+    	return list;
+    }
 }
