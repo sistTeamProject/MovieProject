@@ -220,7 +220,31 @@ public class MemberDAO {
 	    }	    
 	    
 	    //5. 회원정보 수정
-	    //5-1. 데이터 가져오기
+	    //5-1. 비밀번호 체크
+	    public boolean memberPwdCheck(String id,String pwd) {
+	    	boolean bCheck=false;
+	    	try {
+	    		getConnection();
+	    		String sql="SELECT pwd FROM movie_member1 "
+	    				+ "WHERE id=?";
+	    		ps=conn.prepareStatement(sql);
+	    		ps.setString(1, id);
+	    		ResultSet rs=ps.executeQuery();
+	    		rs.next();
+	    		String db_pwd=rs.getString(1);
+	    		rs.close();
+	    		
+	    		if(db_pwd.equals(pwd)) {
+	    			bCheck=true;
+	    		}
+	    	}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				disConnection();
+			}
+	    	return bCheck;
+	    }
+	    //5-2. 데이터 가져오기
 	    public MemberVO memberInfo(String id)
 	    {
 	    	MemberVO vo=new MemberVO();
@@ -256,7 +280,7 @@ public class MemberDAO {
 	  	  	return vo;
 	    }
 	    
-	    //5-2. 실제 수정
+	    //5-3. 실제 수정
 	    public boolean memberInfoEdit(MemberVO vo) {
 	    	boolean bCheck=false;
 	    	try {
@@ -301,6 +325,7 @@ public class MemberDAO {
 			}
 	    	return bCheck;
 	    }
+
 	    
 	    
 	    

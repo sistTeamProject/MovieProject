@@ -177,16 +177,7 @@ public class MemberModel {
 	
 	@RequestMapping("mypage/pwdcheck.do")
 	public String pwdcheck(HttpServletRequest request, HttpServletResponse response) {
-		/*
-		// 사용자가 보내준 PWD값 받기
-		String pwd=request.getParameter("pwdcheck");
 		
-		// 받은 pwd가 session에 저장된 pwd와 일치하는지 확인
-		
-		// 일치하면 
-		// 일치하지 않으면
-		 
-		 */
 		request.setAttribute("main_jsp", "../mypage/pwdcheck.jsp");
 		return "../main/main.jsp";
 		
@@ -194,6 +185,17 @@ public class MemberModel {
 	
 	@RequestMapping("mypage/pwdcheck_result.do")
 	public String pwdcheck_result(HttpServletRequest request, HttpServletResponse response) {
+		// 세션 아이디 받기
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
+		// 사용자가 보내준 PWD값 받기
+		String pwd=request.getParameter("pwd");
+		
+		// 받은 pwd가 session에 저장된 pwd와 일치하는지 확인
+		MemberDAO dao=MemberDAO.newInstance();
+		boolean bCheck=dao.memberPwdCheck(id, pwd);
+		 
+		request.setAttribute("bCheck", bCheck);
 		request.setAttribute("main_jsp", "../mypage/pwdcheck_result.jsp");
 		return "../main/main.jsp";
 		
