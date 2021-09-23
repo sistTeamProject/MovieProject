@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +35,7 @@ Shadowbox.init({
 	players:['iframe']
 });
 $(function(){
-	// ▼ 아이디 중복체크
+/* 	// ▼ 아이디 중복체크
 	$('#idBtn').click(function(){
 		 Shadowbox.open({
 			content:'../member/idcheck.jsp',
@@ -81,7 +82,7 @@ $(function(){
 	})
 		
 	})
-	
+	 */
 	// ▼ 우편번호 찾기 
 	$('#postBtn').click(function(){
 		 Shadowbox.open({
@@ -95,12 +96,14 @@ $(function(){
 	
 	// ▼ 필수입력
 	$('#sendBtn').click(function(){
+		/* 
 		let pwdcheck=$('#pwdcheck').val();
 		if(pwdcheck.trim()==""){
 			alert('비밀번호를 확인해주세요');
 			$('#pwdcheck').focus();
 			return;
-		}
+		} 
+		*/
 		
 		let pwd=$('#pwd').val();
 		if(pwd.trim()=="")
@@ -162,7 +165,7 @@ $(function(){
 		$('#editInfo').submit();
 	})
 
-	})
+	}
 </script>
 </head>
 <body>
@@ -225,8 +228,14 @@ $(function(){
        <tr>
          <th class="text-center" width=20%>성별</th>
          <td width=85% class="inline">
-           <input type="radio" value="남자" name=sex checked>남자
-           <input type="radio" value="여자" name=sex>여자
+           <c:if test="${vo.sex eq '남자' }">
+	           <input type="radio" value="남자" name=sex checked>남자
+	           <input type="radio" value="여자" name=sex>여자
+           </c:if>
+           <c:if test="${vo.sex eq '여자' }">
+	           <input type="radio" value="남자" name=sex>남자
+	           <input type="radio" value="여자" name=sex checked>여자
+           </c:if>
          </td>
        </tr>
        <tr>
@@ -244,20 +253,21 @@ $(function(){
        <tr>
          <th class="text-center" width=20%>우편번호</th>
          <td width=85% class="inline">
-           <input type=text name=post1 size=7 class="input-sm" readonly id="post1">-<input type=text id=post2 name=post2 size=7 class="input-sm" readonly>
+           <input type=text name=post1 size=7 class="input-sm" readonly id="post1" value="${post1 }">-
+           <input type=text id=post2 name=post2 size=7 class="input-sm" readonly value="${post2 }">
            <input type=button value="우편번호검색" class="btn btn-sm btn-primary" id=postBtn>
          </td>
        </tr>
        <tr>
          <th class="text-center" width=20%>주소</th>
          <td width=85%>
-           <input type=text name=addr1 size=55 class="input-sm" id=addr1 readonly>
+           <input type=text name=addr1 size=55 class="input-sm" id=addr1 readonly value="${vo.addr1 }">
          </td>
        </tr>
        <tr>
          <th class="text-center" width=20%>상세주소</th>
          <td width=85%>
-           <input type=text name=addr2 size=55 class="input-sm">
+           <input type=text name=addr2 size=55 class="input-sm" value="${vo.addr2 }">
          </td>
        </tr>
        <tr>
@@ -266,8 +276,8 @@ $(function(){
            <select name=tel1 class="input-sm">
             <option>010</option>
            </select>-
-           <input type=text name=tel2 size=7 class="input-sm" id=tel2 required value="${vo.tel2 }">-
-           <input type=text name=tel3 size=7 class="input-sm" id=tel3 required value="${vo.tel3 }">
+           <input type=text name=tel2 size=7 class="input-sm" id=tel2 required value="${tel2 }">-
+           <input type=text name=tel3 size=7 class="input-sm" id=tel3 required value="${tel3 }">
          </td>
        </tr>
        <tr>

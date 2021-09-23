@@ -256,6 +256,7 @@ public class MemberDAO {
 				+ "FROM movie_member1 "
 				+ "WHERE id=?";
 				ps=conn.prepareStatement(sql);
+				ps.setString(1, id);
 				ResultSet rs=ps.executeQuery();
 				rs.next();
 				vo.setId(rs.getString(1));

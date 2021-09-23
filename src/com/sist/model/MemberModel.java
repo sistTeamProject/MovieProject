@@ -162,6 +162,22 @@ public class MemberModel {
 	//2. 회원정보수정
 	@RequestMapping("mypage/edit_info.do")
 	public String mypage_editInfo(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
+		
+		MemberDAO dao=MemberDAO.newInstance();
+		MemberVO vo=dao.memberInfo(id);
+		String post1=vo.getPost().substring(0,3);
+		String post2=vo.getPost().substring(3);
+		String tel=vo.getTel();
+		String tel2=tel.substring(4,tel.lastIndexOf("-"));
+		String tel3=tel.substring(tel.lastIndexOf("-")+1);
+		
+		request.setAttribute("vo", vo);
+		request.setAttribute("post1", post1);
+		request.setAttribute("post2", post2);
+		request.setAttribute("tel2", tel2);
+		request.setAttribute("tel3", tel3);
 		request.setAttribute("main_jsp", "../mypage/edit_info.jsp");
 		return "../main/main.jsp";
 		
@@ -177,7 +193,6 @@ public class MemberModel {
 	
 	@RequestMapping("mypage/pwdcheck.do")
 	public String pwdcheck(HttpServletRequest request, HttpServletResponse response) {
-		
 		request.setAttribute("main_jsp", "../mypage/pwdcheck.jsp");
 		return "../main/main.jsp";
 		
@@ -188,6 +203,7 @@ public class MemberModel {
 		// 세션 아이디 받기
 		HttpSession session=request.getSession();
 		String id=(String)session.getAttribute("id");
+		
 		// 사용자가 보내준 PWD값 받기
 		String pwd=request.getParameter("pwd");
 		
