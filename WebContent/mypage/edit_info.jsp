@@ -161,7 +161,8 @@ $(function(){
 		// 정상수행 
 		$('#editInfo').submit();
 	})
-})
+
+	})
 </script>
 </head>
 <body>
@@ -199,6 +200,7 @@ $(function(){
          <th class="text-center" width=20%>ID</th>
          <td width=85% class="inline">${sessionScope.id }</td>
        </tr>
+       <!-- ===================================================================================================== 
        <tr>
          <th class="text-center" width=20%>기존 비밀번호</th>
          <td width=85% class="inline">
@@ -206,6 +208,7 @@ $(function(){
            <input type=button value="비밀번호 확인" class="btn btn-sm btn-primary" id="pwdcheckBtn">
          </td>
       </tr>
+      ============================================================================================================= -->
       <tr>
          <th class="text-center" width=20%>변경할 비밀번호</th>
          <td width=85%>
