@@ -23,7 +23,7 @@ $(function(){
                 <div class="col-lg-2">
                     <div class="header__logo">
                         <a href="../main/main.do">
-                            <img src="../img/logo.png" alt="">
+                            <img src="../img/logo2.png" alt="">
                         </a>
                     </div>
                 </div>
@@ -59,13 +59,13 @@ $(function(){
                     </div>
                 </div>
                 <div class="col-lg-2">
-                    <div class="header__right inline">
+                    <div class="header__right inline" style="color: white;">
                     <c:if test="${sessionScope.id==null }">
-                    	<a href="../member/login.do" style="color: white;" class="search-switch fas">로그인</a>
+                    	<a href="../member/login.do" class="search-switch fas">로그인</a>
                     </c:if>
 					<c:if test="${sessionScope.id!=null }">
 						  <tr>
-						  	<td>${sessionScope.name }(${sessionScope.admin=='y'?"관리자":"일반유저" })</td>
+						  	<td>${sessionScope.name }(${sessionScope.admin=='y'?"관리자":"일반" })</td>
 						  	<td>로그인
 						  	  <input type="button" value="로그아웃" class="search-switch fas" id="logoutBtn">&nbsp
 						  	</td>
