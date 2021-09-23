@@ -28,7 +28,7 @@
                                     <div class="section-title">
                                         <h4>장르 추천 영화
                                         <c:out value="${genre}"/>
-                                           <%-- ${rvo.genre}를 좋아하신다면.. --%>
+                                           <%-- ${rvo.genre}를 좋아하신다면.. --%> 
                                         </h4>
                                     </div>
                                 </div>
