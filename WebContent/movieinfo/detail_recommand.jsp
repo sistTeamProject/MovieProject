@@ -26,7 +26,7 @@
                             <div class="row">
                                 <div class="col-lg-8 col-md-8 col-sm-6">
                                     <div class="section-title">
-                                        <h4>장르 추천 영화
+                                        <h4>장르별 추천 영화
                                         <c:out value="${genre}"/>
                                            <%-- ${rvo.genre}를 좋아하신다면..  --%> 
                                         </h4>

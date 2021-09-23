@@ -37,7 +37,7 @@
                         <c:forEach var="vo" items="${list }" varStatus="vonum">
                             <div class="col-lg-3">
                                 <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="${vo.poster }">
+                                    <div class="product__item__pic set-bg" data-setbg="${vo.poster }" style="width:270px;height:400px;cursor:pointer" OnClick="location.href ='details.do?mno=${vo.mno }'">
                                         <div class="ep" style="background-color:transparent;font-size:40px">${vonum.count }</div>
                                         <!-- <div class="comment"><i class="fa fa-comments"></i> 11</div>
                                         <div class="view"><i class="fa fa-eye"></i> 9141</div> -->
