@@ -309,7 +309,7 @@ public class MovieDAO {
     	return list;
     }
     
-    
+    //검색
     public List<MovieVO> searchMovieData(String fd,String type){
     	List<MovieVO> list=new ArrayList<MovieVO>();
     	try {
@@ -338,5 +338,34 @@ public class MovieDAO {
 		}
     	return list;
     }
-
+    
+    //메인페이지 - 슬라이더
+    public List<MovieVO> homeSliderData(){
+    	List<MovieVO> list=new ArrayList<MovieVO>();
+    	try {
+    		getConnection();
+    		String sql="SELECT mno,genre,poster,title,director,story,num "
+    				+ "FROM (SELECT mno,genre,poster,title,director,story,rownum as num "
+    				+ "FROM (SELECT mno,genre,poster,title,director,story "
+    				+ "FROM movie ORDER BY reserve DESC)) WHERE num <= 3";
+    		ps=conn.prepareStatement(sql);
+    		ResultSet rs=ps.executeQuery();
+    		while(rs.next()) {
+    			MovieVO vo=new MovieVO();
+    			vo.setMno(rs.getInt(1));
+    			vo.setGenre(rs.getString(2));
+    			vo.setPoster(rs.getString(3));
+    			vo.setTitle(rs.getString(4));
+    			vo.setDirector(rs.getString(5));
+    			vo.setStory(rs.getString(6));
+    			list.add(vo);
+    		}
+    		rs.close();
+    	}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			disConnection();
+		}
+    	return list;
+    }
 }

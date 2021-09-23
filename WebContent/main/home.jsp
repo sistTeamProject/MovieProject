@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,42 +13,31 @@
     <section class="hero">
         <div class="container">
             <div class="hero__slider owl-carousel">
-                <div class="hero__items set-bg" data-setbg="../img/hero/hero-1.jpg">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="hero__text">
-                                <div class="label">Adventure</div>
-                                <h2>Fate / Stay Night: Unlimited Blade Works</h2>
-                                <p>After 30 days of travel across the world...</p>
-                                <a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero__items set-bg" data-setbg="../img/hero/hero-1.jpg">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="hero__text">
-                                <div class="label">Adventure</div>
-                                <h2>Fate / Stay Night: Unlimited Blade Works</h2>
-                                <p>After 30 days of travel across the world...</p>
-                                <a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero__items set-bg" data-setbg="../img/hero/hero-1.jpg">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="hero__text">
-                                <div class="label">Adventure</div>
-                                <h2>Fate / Stay Night: Unlimited Blade Works</h2>
-                                <p>After 30 days of travel across the world...</p>
-                                <a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            	<c:forEach var="vo" items="${list }">
+	                <div class="hero__items set-bg" data-setbg="${vo.poster }">
+	                    <div class="row">
+	                        <div class="col-lg-6">
+	                            <div class="hero__text">
+	                                <div class="label">${vo.genre }</div>
+	                                <h2>${vo.title }</h2>
+	                                <p>
+		                                <c:choose>
+											<c:when test="${fn:length(vo.story) gt 101}">
+										        <c:out value="${fn:substring(vo.story, 0, 100)}...">
+										        </c:out>
+										    </c:when>
+										    <c:otherwise>
+										        <c:out value="${vo.story}">
+										        </c:out>
+										    </c:otherwise>
+										</c:choose>
+	                                </p>
+	                                <a href="../movieinfo/details.do?mno=${vo.mno }"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+                </c:forEach>
             </div>
         </div>
     </section>
@@ -66,7 +57,7 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <div class="btn__all">
-                                    <a href="#" class="primary-btn">전체보기 <span class="arrow_right"></span></a>
+                                    <a href="../movieinfo/relmovie.do" class="primary-btn">전체보기 <span class="arrow_right"></span></a>
                                 </div>
                             </div>
                         </div>
