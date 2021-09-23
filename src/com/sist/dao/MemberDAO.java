@@ -300,9 +300,9 @@ public class MemberDAO {
 	    					+ "WHERE id=?";
 	    		ps=conn.prepareStatement(sql);
 	    		if(vo.getPwd()!="")
-	    			ps.setString(1, db_pwd);
-	    		else
 	    			ps.setString(1, vo.getPwd());
+	    		else
+	    			ps.setString(1, db_pwd);
 	    		ps.setString(2, vo.getName());
 	    		ps.setString(3, vo.getSex());
 	    		ps.setString(4, vo.getBirthday());

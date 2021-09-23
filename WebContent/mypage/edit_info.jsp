@@ -115,6 +115,7 @@ $(function(){
 		if(pwd!=pwd1)
 		{
 			$('#pwd1').focus();
+			alert('비밀번호를 다시 입력해주세요');
 			return;
 		}
 		
