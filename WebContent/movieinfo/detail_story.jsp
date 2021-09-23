@@ -10,7 +10,7 @@
 </head>
 <body>
 
-		<div style="color:gray;font-size:20px;">${vo.story}</div>
+		<div style="color:gray;font-size:20px;text-align:left;width:900px;left:100px;margin-left:100px;">${vo.story}</div>
 
 		
 		

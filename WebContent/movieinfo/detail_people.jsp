@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table class="table1">		
+	<table class="table1" style="text-align:left;margin-left:100px;">		
 		<tr>
 	      <td class="text-left" style="color:white;font-size:20px;">
 	        	감독 : ${vo.director }
