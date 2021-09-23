@@ -164,8 +164,7 @@ $(function(){
 		// 정상수행 
 		$('#editInfo').submit();
 	})
-
-	}
+})
 </script>
 </head>
 <body>
@@ -282,7 +281,7 @@ $(function(){
        </tr>
        <tr>
          <td colspan="2" class="text-center inline">
-           <input type=button value="수정" class="btn btn-sm btn-info" id=sendBtn>
+           <input type=submit value="수정" class="btn btn-sm btn-info" id=sendBtn>
            <input type=button value="취소" class="btn btn-sm btn-success" 
              onclick="javascript:history.back()"
            >
