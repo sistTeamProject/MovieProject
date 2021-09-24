@@ -222,7 +222,7 @@ $(function(){
        <tr>
          <th class="text-center" width=20%>이름</th>
          <td width=85% class="inline">
-           <input type=text name=name size=20 class="input-sm" id=name required value="${sessionScope.name }">
+           <input type=text name=name size=20 class="input-sm" id=name required value="${vo.name }">
          </td>
        </tr>
        <tr>
