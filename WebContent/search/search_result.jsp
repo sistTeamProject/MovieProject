@@ -63,7 +63,7 @@
 						<c:forEach var="avo" items="${aList }">
 							<div class="col-lg-3">
 								<div class="product__item">
-                                    <a href="../movieinfo/details.do?mno=${tvo.mno }"><img src="${avo.poster }" style="width: 270px;cursor: pointer;" onclick="location.href ='details.do?mno=${avo.mno }'"></a>
+                                    <a href="../movieinfo/details.do?mno=${avo.mno }"><img src="${avo.poster }" style="width: 270px;cursor: pointer;" onclick="location.href ='details.do?mno=${avo.mno }'"></a>
 									<div>
 										<table style="height:60px">
 											<tr>
@@ -99,10 +99,10 @@
 						</div>
 					</div>
 					<div class="row">
-						<c:forEach var="dvo" items="${tList }">
+						<c:forEach var="dvo" items="${dList }">
 							<div class="col-lg-3">
 								<div class="product__item">
-                                    <a href="../movieinfo/details.do?mno=${tvo.mno }"><img src="${dvo.poster }" style="width: 270px;cursor: pointer;" onclick="location.href ='details.do?mno=${dvo.mno }'"></a>
+                                    <a href="../movieinfo/details.do?mno=${dvo.mno }"><img src="${dvo.poster }" style="width: 270px;cursor: pointer;" onclick="location.href ='details.do?mno=${dvo.mno }'"></a>
 									<div>
 										<table style="height:60px">
 											<tr>
