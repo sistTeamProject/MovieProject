@@ -97,10 +97,7 @@ ul.menu{
                     	<div>
                     		<img src="${vo.poster}" width="300" height="300">
                     	</div>
-                        <%-- <div class="anime__details__pic set-bg" data-setbg="${vo.poster }" style="width:300px;height:450px;">
-                            <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                            <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                        </div> --%>
+                       
                     </div>
                     <div class="col-lg-8">
                         <div class="anime__details__text">
@@ -122,17 +119,7 @@ ul.menu{
 
                                 <h6 style="color:white">${vo.engtitle }</h6>
                
-                            </div>
-                            <!-- <div class="anime__details__rating">
-                                <div class="rating">
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star-half-o"></i></a>
-                                </div>
-                                <span>1.029 Votes</span>
-                            </div> -->
+                           
                             
                             <div class="anime__details__widget" style="margin-top:20px">
                                 <div class="row">
@@ -154,12 +141,7 @@ ul.menu{
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="anime__details__btn">
-                                <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Follow</a>
-                                <a href="#" class="watch-btn"><span>Watch Now</span> <i
-                                    class="fa fa-angle-right"></i></a>
-                                </div>
-                            </div> -->
+                           
                         </div>
                     </div>
                 </div>

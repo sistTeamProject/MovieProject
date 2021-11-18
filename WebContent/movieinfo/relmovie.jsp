@@ -91,19 +91,7 @@
             			<a href="../movieinfo/relmovie.do?page=${endPage+1 }">다음 &raquo;</a>
           			</c:if>
                     
-                    <%--<c:forEach var="i" begin="1" end="${totalpage }">
-                    	
-                        	<c:if test="${curpage==i }">
-                        		<a href="../movieinfo/relmovie.do?page=${i }" class="current-page">${i}</a>
-                        	</c:if>
-                        	<c:if test="${curpage!=i }">
-                        		<a href="../movieinfo/relmovie.do?page=${i }">${i}</a>                       		
-                        	</c:if>
-                        
-                        </c:forEach>
-                    --%>
-                        <!-- <a href="#" class="current-page">1</a> -->
-                        <!-- <a href="#"><i class="fa fa-angle-double-right"></i></a> -->
+                    
                     </div> 
                 </div>
 

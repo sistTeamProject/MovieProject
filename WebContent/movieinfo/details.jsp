@@ -55,7 +55,6 @@ $(function(){
 		
 		$.ajax({
 			type:'post',
-			async:false,
 			url:'../movieinfo/detail_story.do',
 			data:{"mno":mno1},
 			success:function(result1)
@@ -75,7 +74,6 @@ $(function(){
 		
 		$.ajax({
 			type:'post',
-			async:false,
 			url:'../movieinfo/detail_people.do',
 			data:{"mno":mno2},
 			success:function(result2)
@@ -93,7 +91,6 @@ $(function(){
 		let mno3=$(this).attr("data-mno3");
 		$.ajax({
 			type:'post',
-			async:false,
 			url:'../movieinfo/detail_video.do',
 			data:{"mno":mno3},
 			success:function(result3)
@@ -110,7 +107,6 @@ $(function(){
 		let mno4=$(this).attr("data-mno4");
 		$.ajax({
 			type:'post',
-			async:false,
 			url:'../movieinfo/detail_recommand.do',
 			data:{"genre":mno4},
 			success:function(result4)
@@ -190,52 +186,12 @@ $(function(){
 
                     </div>
                    
-                    <%--<div class="col-lg-4 col-md-4">
                     
-                    	
-                         <div class="anime__details__sidebar">
-                            <div class="section-title">
-                                <h5>you might like...</h5>
-                            </div>
-                            <div class="product__sidebar__view__item set-bg" data-setbg="${rvo.poster }">
-                                <div class="ep">18 / ?</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                <h5><a href="#">Boruto: Naruto next generations</a></h5>
-                            </div>
-                            <div class="product__sidebar__view__item set-bg" data-setbg="../img/sidebar/tv-2.jpg">
-                                <div class="ep">18 / ?</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                            </div>
-                            <div class="product__sidebar__view__item set-bg" data-setbg="../img/sidebar/tv-3.jpg">
-                                <div class="ep">18 / ?</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                <h5><a href="#">Sword art online alicization war of underworld</a></h5>
-                            </div>
-                            <div class="product__sidebar__view__item set-bg" data-setbg="../img/sidebar/tv-4.jpg">
-                                <div class="ep">18 / ?</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                <h5><a href="#">Fate/stay night: Heaven's Feel I. presage flower</a></h5>
-                            </div>
-                        </div>
-                    </div>--%>
                 </div>
             </div>
            </div>
         </section>
-        <!-- Anime Section End -->
-
-
-          <!-- Search model Begin -->
-          <!-- <div class="search-model">
-            <div class="h-100 d-flex align-items-center justify-content-center">
-                <div class="search-close-switch"><i class="icon_close"></i></div>
-                <form class="search-model-form">
-                    <input type="text" id="search-input" placeholder="Search here.....">
-                </form>
-            </div>
-        </div> -->
-        <!-- Search model end -->
+        
 
         <!-- Js Plugins -->
         <script src="../js/jquery-3.3.1.min.js"></script>
