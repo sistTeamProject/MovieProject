@@ -299,10 +299,11 @@ public class MemberDAO {
 	    					+ "email=?, post=?, addr1=?, addr2=?, tel=? "
 	    					+ "WHERE id=?";
 	    		ps=conn.prepareStatement(sql);
-	    		if(vo.getPwd()!="")
+	    		if(vo.getPwd()!=null) {
 	    			ps.setString(1, vo.getPwd());
-	    		else
+	    		}else {
 	    			ps.setString(1, db_pwd);
+	    		}
 	    		ps.setString(2, vo.getName());
 	    		ps.setString(3, vo.getSex());
 	    		ps.setString(4, vo.getBirthday());

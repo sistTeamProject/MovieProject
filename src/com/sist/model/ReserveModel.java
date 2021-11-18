@@ -30,6 +30,22 @@ public class ReserveModel {
 		request.setAttribute("list", list);
 		return "../reserve/movie_list.jsp";
 	}
+	@RequestMapping("reserve/cinema.do")
+	public String cinema(HttpServletRequest request,HttpServletResponse response) {
+		String[] gu= {"강남구","강동/송파구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구",
+				"성북구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"};
+		ReserveDAO dao=ReserveDAO.newInstance();
+		List<CinemaVO> clist=dao.cinema();
+		request.setAttribute("gu", gu);
+		request.setAttribute("clist",clist );
+		return "../reserve/cinema.jsp";
+	}
+	@RequestMapping("reserve/time.do")
+	public String time(HttpServletRequest request,HttpServletResponse response) {
+		
+		return "../reserve/time.jsp";
+	}
+	
 	@RequestMapping("reserve/date.do")
 	public String reserve_date(HttpServletRequest request,HttpServletResponse response) {
 		// 사용자 요청한 데이터 => 년도/월

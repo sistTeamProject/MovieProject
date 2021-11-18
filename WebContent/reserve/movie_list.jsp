@@ -27,7 +27,12 @@ $(function(){
 			success:function(result){
 				$('#movie_date').html(result);	
 			}
-		})
+		})	
+		$(this).addClass("selected");
+		let title=$(this).attr("data-title");
+		let poster=$(this).attr("data-poster")
+		$('#title').text(title);
+		$('#poster').attr("src",poster);
 	})
 })
 
@@ -36,31 +41,37 @@ $(function(){
 .movie_list{
 	display:none;
 }
-
-
+.space:after {
+	text-align: left;
+    content: '   \25BC';
+}
+.selected{
+	background-color:red!important;
+}
 </style>
 </head>
 <body>
 					<div class="movie_type">
-						<h3>탑 10</h3>
+						<h3>Top 10<span class='space'>&nbsp;&nbsp;</span></h3>
+						
 					</div>
 					<div class="movie_list">
 						<c:forEach var="vo" items="${list }" begin="0" end="9" varStatus="s">
-						<div class="movie">
+						<div class="movie" data-title="${vo.title }" data-poster="${vo.poster }">
 							<span>${s.count }</span>
-							<span>${vo.grade }</span>
+							<span><img src="${vo.grade }" style="width:15px; height:15px"></span>
 							<span>${vo.title }</span>
 						</div>
 						</c:forEach>
 					</div>
 					<div class="movie_type">
-						<h3>탑 10외 영화</h3>
+						<h3>Top 10외 영화<span class='space'></span></h3>
 					</div>
 					<div class="movie_list" id="movie_list">
 
 						<c:forEach var="vo" items="${list }" begin="10" >
-						<div class="movie">
-							<span>${vo.grade }</span>
+						<div class="movie" data-title="${vo.title }" data-poster="${vo.poster }">
+							<span><img src="${vo.grade }" style="width:15px; height:15px"></span>
 							<span>${vo.title }</span>
 						</div>
 						</c:forEach>
